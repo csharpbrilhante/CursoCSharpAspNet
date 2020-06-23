@@ -79,6 +79,7 @@
             this.btnAcessar.TabIndex = 4;
             this.btnAcessar.Text = "Acessar";
             this.btnAcessar.UseVisualStyleBackColor = true;
+            this.btnAcessar.Click += new System.EventHandler(this.btnAcessar_Click);
             // 
             // btnCancelar
             // 
@@ -92,6 +93,7 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnAcessar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 201);
