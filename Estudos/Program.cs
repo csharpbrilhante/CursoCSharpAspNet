@@ -10,25 +10,39 @@ namespace Estudos
     {
         static void Main(string[] args)
         {
-            //atribuição
-            string nome = "Meu nome"; //uma só igualdade é atribuição
+            //tipo  variavel    operador de instanciacao/ associacao
+            Metodos instancia = new Metodos();
+            instancia.Executar();
+            instancia.ExecutarComParametro("Olá mundo");
 
-            int numero1 = 1;
-            int numero2 = 1;
+            int numero1 = 10;
+            int numero2 = 10;
 
-            string resultado = "";
+            instancia.Somar(numero1, numero2);
 
-            if(numero1 >= numero2)
-            {
-                resultado = "é maior";
-            }
-            else
-            {
-                resultado = "não é maior";
-            }
+            int numero3 = 10;
 
-            Console.WriteLine(resultado);
+            instancia.SomarComDefault(numero1, numero2);
+
+            var numero_E_Par = instancia.NumeroPar(numero1);
+
+            Console.WriteLine(string.Format("O número {0} é {1}", numero1, (numero_E_Par ? "Par" : "Ímpar"))); //usando format
+
+            //Console.WriteLine($"O número {numero1} é {(numero_E_Par ? "Par" : "Ímpar")}"); //usando interpolação
+
+            //Console.WriteLine("O número " + numero1 + " é " + (numero_E_Par ? "Par" : "Ímpar")); //conactenação simples
+
+            Console.WriteLine(string.Concat("Método ObterSoma = ", instancia.ObterSoma(numero1, numero2)));
+
+            int valor = 10;
+
+            instancia.SomarValorPorReferencia(numero1, numero2, ref valor);
+
+            Console.WriteLine($"O Valor = {valor}");
+            
             Console.ReadKey();
+
+
         }
     }
 }
