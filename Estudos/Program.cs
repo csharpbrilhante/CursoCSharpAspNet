@@ -39,10 +39,10 @@ namespace Estudos
             instancia.SomarValorPorReferencia(numero1, numero2, ref valor);
 
             Console.WriteLine($"O Valor = {valor}");
-            
+
+            Pessoa pessoa = new Pessoa("José", "Silva");
+            Console.WriteLine($"O nome da pessoa é \"{pessoa.NomeCompleto}\"");
             Console.ReadKey();
-
-
         }
     }
 }

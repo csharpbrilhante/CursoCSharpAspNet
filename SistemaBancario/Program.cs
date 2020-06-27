@@ -16,7 +16,12 @@ namespace SistemaBancario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            var login = new frmLogin();
+            if(login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmPrincipal(login.UsuarioLogado));
+            }
         }
     }
 }

@@ -8,6 +8,8 @@ namespace SistemaBancario
     {
         LoginBll loginBO;
 
+        public string UsuarioLogado => loginBO.UsuarioLogado;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -24,9 +26,14 @@ namespace SistemaBancario
             var isAutenticado = loginBO.Autenticar(txtUsuario.Text, txtSenha.Text);
 
             if (isAutenticado)
-                MessageBox.Show("Autenticado");
+                DialogResult = DialogResult.OK;
             else
-                MessageBox.Show("Usuário ou senha inválido");            
+            {
+                MessageBox.Show("Usuário ou senha inválido");
+                txtUsuario.Text = string.Empty;
+                txtSenha.Text = string.Empty;
+                txtUsuario.Focus();
+            }
         }
     }
 }
