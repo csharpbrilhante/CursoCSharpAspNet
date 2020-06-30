@@ -33,8 +33,19 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnCorrentista = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnContaCorrente = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnLancamentos = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnSaldo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnExtratoPeriodo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnUsuario = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -59,6 +70,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.lblUsuarioLogado});
@@ -70,15 +82,93 @@
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(50, 17);
             this.toolStripStatusLabel1.Text = "Usuário:";
             // 
             // lblUsuarioLogado
             // 
+            this.lblUsuarioLogado.BackColor = System.Drawing.Color.White;
             this.lblUsuarioLogado.Name = "lblUsuarioLogado";
             this.lblUsuarioLogado.Size = new System.Drawing.Size(118, 17);
             this.lblUsuarioLogado.Text = "toolStripStatusLabel2";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastroToolStripMenuItem,
+            this.movimentaçãoToolStripMenuItem,
+            this.consultasToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(704, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cadastroToolStripMenuItem
+            // 
+            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnCorrentista,
+            this.mnContaCorrente,
+            this.mnUsuario});
+            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.cadastroToolStripMenuItem.Text = "&Cadastro";
+            // 
+            // mnCorrentista
+            // 
+            this.mnCorrentista.Name = "mnCorrentista";
+            this.mnCorrentista.Size = new System.Drawing.Size(221, 22);
+            this.mnCorrentista.Text = "Cadastro de Correntista";
+            this.mnCorrentista.Click += new System.EventHandler(this.mnCorrentista_Click);
+            // 
+            // mnContaCorrente
+            // 
+            this.mnContaCorrente.Name = "mnContaCorrente";
+            this.mnContaCorrente.Size = new System.Drawing.Size(221, 22);
+            this.mnContaCorrente.Text = "Cadastro de Conta Corrente";
+            // 
+            // movimentaçãoToolStripMenuItem
+            // 
+            this.movimentaçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnLancamentos});
+            this.movimentaçãoToolStripMenuItem.Name = "movimentaçãoToolStripMenuItem";
+            this.movimentaçãoToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.movimentaçãoToolStripMenuItem.Text = "Movimentação";
+            // 
+            // mnLancamentos
+            // 
+            this.mnLancamentos.Name = "mnLancamentos";
+            this.mnLancamentos.Size = new System.Drawing.Size(180, 22);
+            this.mnLancamentos.Text = "&Lançamentos";
+            // 
+            // consultasToolStripMenuItem
+            // 
+            this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnSaldo,
+            this.mnExtratoPeriodo});
+            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.consultasToolStripMenuItem.Text = "Consultas";
+            // 
+            // mnSaldo
+            // 
+            this.mnSaldo.Name = "mnSaldo";
+            this.mnSaldo.Size = new System.Drawing.Size(180, 22);
+            this.mnSaldo.Text = "Saldo";
+            // 
+            // mnExtratoPeriodo
+            // 
+            this.mnExtratoPeriodo.Name = "mnExtratoPeriodo";
+            this.mnExtratoPeriodo.Size = new System.Drawing.Size(180, 22);
+            this.mnExtratoPeriodo.Text = "Extrato Por Período";
+            // 
+            // mnUsuario
+            // 
+            this.mnUsuario.Name = "mnUsuario";
+            this.mnUsuario.Size = new System.Drawing.Size(221, 22);
+            this.mnUsuario.Text = "Cadastro de Usuário";
             // 
             // frmPrincipal
             // 
@@ -87,6 +177,7 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(704, 361);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmPrincipal";
@@ -95,6 +186,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,5 +200,15 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblUsuarioLogado;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnCorrentista;
+        private System.Windows.Forms.ToolStripMenuItem mnContaCorrente;
+        private System.Windows.Forms.ToolStripMenuItem mnUsuario;
+        private System.Windows.Forms.ToolStripMenuItem movimentaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnLancamentos;
+        private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnSaldo;
+        private System.Windows.Forms.ToolStripMenuItem mnExtratoPeriodo;
     }
 }

@@ -10,6 +10,12 @@ namespace Estudos
     {
         static void Main(string[] args)
         {
+            var condicional = new Condicional();
+            condicional.TestarWhile();
+            Console.ReadKey();
+
+            return; //aqui ele quebra o fluxo de execução!
+
             //tipo  variavel    operador de instanciacao/ associacao
             Metodos instancia = new Metodos();
             instancia.Executar();

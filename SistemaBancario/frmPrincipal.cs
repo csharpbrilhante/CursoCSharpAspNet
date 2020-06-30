@@ -25,5 +25,16 @@ namespace SistemaBancario
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// codificar a abertura do nosso fórmulário de cadastro de correntista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnCorrentista_Click(object sender, EventArgs e)
+        {
+            var frmCadastroCorrentista = new frmCadastroCorrentista();
+            frmCadastroCorrentista.ShowDialog();
+        }
     }
 }
