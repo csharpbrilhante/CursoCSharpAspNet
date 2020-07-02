@@ -64,9 +64,11 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Correntista.cs" />
     <Compile Include="Negocios\LoginBll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\CorrentistaRepository.cs" />
     <EmbeddedResource Include="frmCadastroCorrentista.resx">
       <DependentUpon>frmCadastroCorrentista.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,5 +107,6 @@
   <ItemGroup>
     <None Include="Resources\jupiterLogo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
