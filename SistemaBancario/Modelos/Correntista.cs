@@ -11,5 +11,6 @@ namespace SistemaBancario.Modelos
         public int Id { get; set; } //primary key
         public string Nome { get; set; }
         public string CpfCnpj { get; set; }
+        public bool Ativo { get; set; }
     }
 }

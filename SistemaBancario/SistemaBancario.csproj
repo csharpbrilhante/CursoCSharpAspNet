@@ -65,6 +65,7 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Correntista.cs" />
+    <Compile Include="Negocios\CorrentistaBll.cs" />
     <Compile Include="Negocios\LoginBll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

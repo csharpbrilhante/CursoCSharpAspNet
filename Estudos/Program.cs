@@ -10,6 +10,57 @@ namespace Estudos
     {
         static void Main(string[] args)
         {
+
+            var lista = new Lista<Pessoa>();
+            
+            lista.Add(new Pessoa()
+            {
+                Nome = "José", 
+                Sobrenome = "Silva"
+            });
+
+            Console.WriteLine("Meus amigos são:");
+
+            foreach (var amigo in lista.ObterLista())
+            {
+                Console.WriteLine(amigo.NomeCompleto);
+            }
+
+            Console.ReadKey();
+            return;
+
+
+            List<int> numeros = new List<int>()
+            {
+                0, 1, 2, 3, 4, 5
+            };
+
+            //for (int linha = 0; linha < arquivoDoBanco.Count; linha++)
+
+            //int contador = 0;
+
+            //while(contador < arquivoDoBanco.Count)
+            //{
+            //    Console.WriteLine(arquivoDoBanco[contador]);
+            //    //contador++;
+            //}
+
+            foreach (var item in numeros)
+            {
+                Console.WriteLine(item);
+            }
+
+            //inicialização, condição do for, incremento            
+            //for (int linha = 0; linha < arquivoDoBanco.Count; linha++)
+            //{
+            //    Console.WriteLine(arquivoDoBanco[linha]);
+            //}
+
+            Console.ReadKey();
+            return;
+
+
+            //obsoleto
             var condicional = new Condicional();
             condicional.TestarWhile();
             Console.ReadKey();

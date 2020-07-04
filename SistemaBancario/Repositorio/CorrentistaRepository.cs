@@ -15,7 +15,13 @@ namespace SistemaBancario.Repositorio
 
         CorrentistaRepository()
         {
-            _correntistas = new List<Correntista>();
+
+            var correntista = new Correntista();
+
+            _correntistas = new List<Correntista>()
+            {
+                
+            };
         }
 
         public static CorrentistaRepository ObterInstancia()

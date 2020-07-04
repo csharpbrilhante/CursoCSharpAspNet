@@ -1,4 +1,5 @@
 ﻿using SistemaBancario.Modelos;
+using SistemaBancario.Negocios;
 using SistemaBancario.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,13 @@ namespace SistemaBancario
     public partial class frmCadastroCorrentista : Form
     {
         //criei o nosso "Dataset" de correntistas
-        readonly CorrentistaRepository repositorio;
+        readonly CorrentistaBll _correntistaBO;
         private BindingSource _datasource;
 
         public frmCadastroCorrentista()
         {
             InitializeComponent();
-            repositorio = CorrentistaRepository.ObterInstancia();
+            _correntistaBO = new CorrentistaBll();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -34,14 +35,14 @@ namespace SistemaBancario
             novoCorrentista.CpfCnpj = txtCpfCnpj.Text;
 
             //invoquei o metodo create do dataset
-            repositorio.Create(novoCorrentista);
+            _correntistaBO.CriarOuAtualizarCorrentista(novoCorrentista);
             _datasource.ResetBindings(true);
 
         }
 
         private void CarregarLista()
         {
-            var correntistas = repositorio.Read();
+            var correntistas = _correntistaBO.ObterCorrentistas();
             _datasource = new BindingSource();
             _datasource.DataSource = correntistas;
             gridCorrentistas.DataSource = _datasource;

@@ -20,8 +20,6 @@ namespace Estudos
 
         public string Sobrenome { get; set; }
 
-        public string NomeCompleto  => Nome + " " + Sobrenome;
-
-
+        public string NomeCompleto => Nome + " " + Sobrenome;
 	}
 }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Condicional.cs" />
+    <Compile Include="Lista.cs" />
     <Compile Include="Metodos.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Program.cs" />
