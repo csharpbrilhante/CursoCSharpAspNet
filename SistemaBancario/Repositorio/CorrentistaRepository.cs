@@ -15,12 +15,10 @@ namespace SistemaBancario.Repositorio
 
         CorrentistaRepository()
         {
-
-            var correntista = new Correntista();
-
             _correntistas = new List<Correntista>()
             {
-                
+                new Correntista(){Id = 1, Nome = "José da Silva", Ativo = true},
+                new Correntista(){Id = 2, Nome = "Maria da Silva", Ativo = true}
             };
         }
 
