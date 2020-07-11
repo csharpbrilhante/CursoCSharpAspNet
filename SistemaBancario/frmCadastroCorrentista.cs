@@ -23,20 +23,31 @@ namespace SistemaBancario
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            _correntistaSelecionado.Nome = txtNome.Text;
-            _correntistaSelecionado.CpfCnpj = txtCpfCnpj.Text;
-            _correntistaSelecionado.Ativo = chkAtivo.Checked;
-            _correntistaBO.CriarOuAtualizarCorrentista(_correntistaSelecionado);
+            try
+            {
+                _correntistaSelecionado.Nome = txtNome.Text;
+                _correntistaSelecionado.CpfCnpj = txtCpfCnpj.Text;
+                _correntistaSelecionado.Ativo = chkAtivo.Checked;
 
-            //limpar tudo
-            txtNome.Clear();
-            txtCpfCnpj.Clear();
-            chkAtivo.Checked = false;
-            pnlEdicao.Enabled = false;
-            btnNovo.Focus();
-            _correntistaSelecionado = null;
-            HabilitarDesabilitarControles();
+                _correntistaBO.CriarOuAtualizarCorrentista(_correntistaSelecionado);
 
+                //limpar tudo
+                txtNome.Clear();
+                txtCpfCnpj.Clear();
+                chkAtivo.Checked = false;
+                pnlEdicao.Enabled = false;
+                btnNovo.Focus();
+                _correntistaSelecionado = null;
+                HabilitarDesabilitarControles();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                               "Validação",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
         }
 
         private void CarregarLista()
@@ -50,9 +61,15 @@ namespace SistemaBancario
 
         private void frmCadastroCorrentista_Load(object sender, EventArgs e)
         {
-            gridCorrentistas.AutoGenerateColumns = false;
-            CarregarLista();
-            HabilitarDesabilitarControles();
+            try
+            {
+                gridCorrentistas.AutoGenerateColumns = false;
+                CarregarLista();
+            }
+            finally
+            {
+                HabilitarDesabilitarControles();
+            }
         }
 
         private void HabilitarDesabilitarControles()

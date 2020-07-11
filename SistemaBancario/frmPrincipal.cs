@@ -36,5 +36,10 @@ namespace SistemaBancario
             var frmCadastroCorrentista = new frmCadastroCorrentista();
             frmCadastroCorrentista.ShowDialog();
         }
+
+        private void mnUsuario_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

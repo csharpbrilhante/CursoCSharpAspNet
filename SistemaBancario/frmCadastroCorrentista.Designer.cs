@@ -34,15 +34,15 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
             this.gridCorrentistas = new System.Windows.Forms.DataGridView();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.pnlEdicao = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.pnlEdicao = new System.Windows.Forms.Panel();
             this.chkAtivo = new System.Windows.Forms.CheckBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridCorrentistas)).BeginInit();
             this.pnlEdicao.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(316, 16);
+            this.label3.Location = new System.Drawing.Point(338, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 2;
@@ -69,15 +69,14 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(35, 32);
             this.txtNome.Name = "txtNome";
-            this.txtNome.PasswordChar = '*';
-            this.txtNome.Size = new System.Drawing.Size(278, 20);
+            this.txtNome.Size = new System.Drawing.Size(300, 20);
             this.txtNome.TabIndex = 0;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Green;
-            this.btnSalvar.Location = new System.Drawing.Point(341, 62);
+            this.btnSalvar.Location = new System.Drawing.Point(363, 62);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(88, 31);
             this.btnSalvar.TabIndex = 2;
@@ -87,11 +86,12 @@
             // 
             // txtCpfCnpj
             // 
-            this.txtCpfCnpj.Location = new System.Drawing.Point(319, 32);
+            this.txtCpfCnpj.Location = new System.Drawing.Point(341, 32);
             this.txtCpfCnpj.Mask = "999\\.999\\.999\\-99";
             this.txtCpfCnpj.Name = "txtCpfCnpj";
             this.txtCpfCnpj.Size = new System.Drawing.Size(110, 20);
             this.txtCpfCnpj.TabIndex = 1;
+            this.txtCpfCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // gridCorrentistas
             // 
@@ -106,6 +106,26 @@
             this.gridCorrentistas.Size = new System.Drawing.Size(520, 177);
             this.gridCorrentistas.TabIndex = 4;
             this.gridCorrentistas.TabStop = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Nome";
+            this.Column1.HeaderText = "Nome";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 225;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "CpfCnpj";
+            this.Column2.HeaderText = "Cpf/ Cnpj";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Ativo";
+            this.Column3.HeaderText = "Ativo";
+            this.Column3.Name = "Column3";
             // 
             // btnNovo
             // 
@@ -132,10 +152,20 @@
             this.pnlEdicao.Size = new System.Drawing.Size(613, 109);
             this.pnlEdicao.TabIndex = 1;
             // 
+            // chkAtivo
+            // 
+            this.chkAtivo.AutoSize = true;
+            this.chkAtivo.Location = new System.Drawing.Point(54, 76);
+            this.chkAtivo.Name = "chkAtivo";
+            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.TabIndex = 4;
+            this.chkAtivo.Text = "Ativo";
+            this.chkAtivo.UseVisualStyleBackColor = true;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(251, 62);
+            this.btnCancelar.Location = new System.Drawing.Point(273, 62);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 31);
             this.btnCancelar.TabIndex = 3;
@@ -163,41 +193,11 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Nome";
-            this.Column1.HeaderText = "Nome";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 225;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "CpfCnpj";
-            this.Column2.HeaderText = "Cpf/ Cnpj";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Ativo";
-            this.Column3.HeaderText = "Ativo";
-            this.Column3.Name = "Column3";
-            // 
-            // chkAtivo
-            // 
-            this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(54, 76);
-            this.chkAtivo.Name = "chkAtivo";
-            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
-            this.chkAtivo.TabIndex = 4;
-            this.chkAtivo.Text = "Ativo";
-            this.chkAtivo.UseVisualStyleBackColor = true;
-            // 
             // frmCadastroCorrentista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 368);
+            this.ClientSize = new System.Drawing.Size(640, 347);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.pnlEdicao);

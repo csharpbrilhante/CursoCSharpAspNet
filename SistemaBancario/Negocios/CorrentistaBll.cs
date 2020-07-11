@@ -12,8 +12,10 @@ namespace SistemaBancario.Negocios
     {
         readonly CorrentistaRepository _dataset = CorrentistaRepository.ObterInstancia();
 
-        public void CriarOuAtualizarCorrentista(Correntista pCorrentista)
+        public bool CriarOuAtualizarCorrentista(Correntista pCorrentista)
         {
+            Validar(pCorrentista);
+            
             var correntistaExistente = _dataset.Read().FirstOrDefault(x => x.Id == pCorrentista.Id);
             
             if(correntistaExistente == null)
@@ -24,6 +26,8 @@ namespace SistemaBancario.Negocios
             {
                 _dataset.Update(pCorrentista);
             }
+
+            return true;
         }
 
         public List<Correntista> ObterCorrentistas(bool pSomenteAtivos = false)
@@ -44,6 +48,19 @@ namespace SistemaBancario.Negocios
         public void ExcluirCorrentista(Correntista pCorrentista)
         {
             _dataset.Delete(pCorrentista);
+        }
+
+        private void Validar(Correntista pCorrentista)
+        {
+            if(string.IsNullOrWhiteSpace(pCorrentista.Nome))
+            {
+                throw new Exception("O campo nome não foi preenchido.");
+            }
+
+            if (string.IsNullOrWhiteSpace(pCorrentista.CpfCnpj))
+            {
+                throw new Exception("O campo Cpf/Cnpj não foi preenchido.");
+            }
         }
 
     }

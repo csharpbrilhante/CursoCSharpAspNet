@@ -37,12 +37,12 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnCorrentista = new System.Windows.Forms.ToolStripMenuItem();
             this.mnContaCorrente = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnLancamentos = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnSaldo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExtratoPeriodo = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnUsuario = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -129,6 +129,13 @@
             this.mnContaCorrente.Size = new System.Drawing.Size(221, 22);
             this.mnContaCorrente.Text = "Cadastro de Conta Corrente";
             // 
+            // mnUsuario
+            // 
+            this.mnUsuario.Name = "mnUsuario";
+            this.mnUsuario.Size = new System.Drawing.Size(221, 22);
+            this.mnUsuario.Text = "Cadastro de Usuário";
+            this.mnUsuario.Click += new System.EventHandler(this.mnUsuario_Click);
+            // 
             // movimentaçãoToolStripMenuItem
             // 
             this.movimentaçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -140,7 +147,7 @@
             // mnLancamentos
             // 
             this.mnLancamentos.Name = "mnLancamentos";
-            this.mnLancamentos.Size = new System.Drawing.Size(180, 22);
+            this.mnLancamentos.Size = new System.Drawing.Size(145, 22);
             this.mnLancamentos.Text = "&Lançamentos";
             // 
             // consultasToolStripMenuItem
@@ -155,20 +162,14 @@
             // mnSaldo
             // 
             this.mnSaldo.Name = "mnSaldo";
-            this.mnSaldo.Size = new System.Drawing.Size(180, 22);
+            this.mnSaldo.Size = new System.Drawing.Size(176, 22);
             this.mnSaldo.Text = "Saldo";
             // 
             // mnExtratoPeriodo
             // 
             this.mnExtratoPeriodo.Name = "mnExtratoPeriodo";
-            this.mnExtratoPeriodo.Size = new System.Drawing.Size(180, 22);
+            this.mnExtratoPeriodo.Size = new System.Drawing.Size(176, 22);
             this.mnExtratoPeriodo.Text = "Extrato Por Período";
-            // 
-            // mnUsuario
-            // 
-            this.mnUsuario.Name = "mnUsuario";
-            this.mnUsuario.Size = new System.Drawing.Size(221, 22);
-            this.mnUsuario.Text = "Cadastro de Usuário";
             // 
             // frmPrincipal
             // 
