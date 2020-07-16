@@ -10,7 +10,7 @@ namespace SistemaBancario.Negocios
 {
     public class CorrentistaBll
     {
-        readonly CorrentistaRepository _dataset = CorrentistaRepository.ObterInstancia();
+        readonly CorrentistaRepository _dataset = new CorrentistaRepository();
 
         public bool CriarOuAtualizarCorrentista(Correntista pCorrentista)
         {
@@ -34,16 +34,6 @@ namespace SistemaBancario.Negocios
         {
             return (pSomenteAtivos ? _dataset.Read().Where(x => x.Ativo).ToList() : _dataset.Read());
         }
-
-        //public List<Correntista> ObterCorrentistasAtivos()
-        //{
-        //    return _dataset.Read().Where(x => x.Ativo).ToList();
-        //}
-
-        //public List<Correntista> ObterCorrentistasAtivos2()
-        //{
-        //    return ObterCorrentistasAtivos().Where(x => x.Ativo).ToList();
-        //}
 
         public void ExcluirCorrentista(Correntista pCorrentista)
         {

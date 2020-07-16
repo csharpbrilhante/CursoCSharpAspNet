@@ -9,41 +9,34 @@ namespace SistemaBancario.Repositorio
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T: IModelo
     {
-        protected static RepositoryBase<T> _instancia;
-        protected static List<T> _lista;
+        protected List<T> lista;
 
         public RepositoryBase()
         {
 
         }
 
-        public static RepositoryBase<T> ObterInstancia<R>() where R: RepositoryBase<T>
+        public virtual void Create(T pObjeto)
         {
-            if (_instancia == null)
-            {
-                _instancia = Activator.CreateInstance<R>();
-            }
-
-            return _instancia;
-        }
-
-        public void Create(T pObjeto)
-        {
-            pObjeto.Id = _lista?.Count > 0 ? _lista.Max(x => x.Id) + 1 : 1;
+            pObjeto.Id = lista?.Count > 0 ? lista.Max(x => x.Id) + 1 : 1;
             pObjeto.DataCriacao = DateTime.Now;
-            _lista.Add(pObjeto);
+            lista.Add(pObjeto);
         }
 
-        public void Delete(T pObjeto)
+        public virtual List<T> Read()
         {
-            _lista.Remove(pObjeto);
+            return lista;
         }
 
-        public List<T> Read()
+        public abstract void Update(T pObjeto);
+
+        public virtual void Delete(T pObjeto)
         {
-            return _lista;
+            lista.Remove(pObjeto);
         }
 
-        public virtual void Update(T pObjeto) { }
+        
+
+        
     }
 }
