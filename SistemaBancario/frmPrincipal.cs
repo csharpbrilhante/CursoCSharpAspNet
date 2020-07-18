@@ -39,7 +39,8 @@ namespace SistemaBancario
 
         private void mnUsuario_Click(object sender, EventArgs e)
         {
-            
+            var frmCadastroUsuario = new frmCadastroUsuario();
+            frmCadastroUsuario.ShowDialog();
         }
     }
 }

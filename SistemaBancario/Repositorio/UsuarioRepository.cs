@@ -6,6 +6,11 @@ namespace SistemaBancario.Repositorio
 {
     public class UsuarioRepository : RepositoryBase<Usuario>
     {
+        public UsuarioRepository() : base()
+        {
+            lista = DBMem.ObterUsuarios();
+        }
+
         public override void Update(Usuario pObjeto)
         {
             var usuarioAtualizar = lista.FirstOrDefault(x => x.Id == pObjeto.Id);

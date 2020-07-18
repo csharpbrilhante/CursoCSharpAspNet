@@ -1,5 +1,6 @@
 ﻿using SistemaBancario.Modelos;
 using SistemaBancario.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,9 +10,16 @@ namespace SistemaBancario.Negocios
     {
         private readonly UsuarioRepository _dataset = new UsuarioRepository();
 
-        public void CriarOuAtualizarUsuario(Usuario pUsuario)
+        public void CriarOuAtualizarUsuario(Usuario pUsuario, Action<string> pCallback)
         {
-            Validar(pUsuario);
+            try
+            {
+                Validar(pUsuario);
+            }
+            catch (Exception ex)
+            {
+                pCallback.Invoke(ex.Message);
+            }
 
             var usuarioExistente = _dataset.Read().FirstOrDefault(x => x.Id == pUsuario.Id);
 
