@@ -9,24 +9,28 @@ namespace SistemaBancario.Negocios
     public class UsuarioBll
     {
         private readonly UsuarioRepository _dataset = new UsuarioRepository();
-
-        public void CriarOuAtualizarUsuario(Usuario pUsuario, Action<string> pCallback)
+        
+        public bool CriarOuAtualizarUsuario(Usuario pUsuario, Action<string> pCallbackErro, Action pValidaConfirmacaoSenha)
         {
             try
             {
                 Validar(pUsuario);
+                pValidaConfirmacaoSenha.Invoke();
+                
+                var usuarioExistente = _dataset.Read().FirstOrDefault(x => x.Id == pUsuario.Id);
+
+                if (usuarioExistente == null)
+                    _dataset.Create(pUsuario);
+                else
+                    _dataset.Update(pUsuario);
+
+                return true;
             }
             catch (Exception ex)
             {
-                pCallback.Invoke(ex.Message);
+                pCallbackErro.Invoke(ex.Message);
+                return false;
             }
-
-            var usuarioExistente = _dataset.Read().FirstOrDefault(x => x.Id == pUsuario.Id);
-
-            if (usuarioExistente == null)
-                _dataset.Create(pUsuario);
-            else
-                _dataset.Update(pUsuario);
         }
         public List<Usuario> ObterUsuarios()
         {

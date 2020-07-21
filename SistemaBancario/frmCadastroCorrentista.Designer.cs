@@ -43,8 +43,15 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbCpf = new System.Windows.Forms.RadioButton();
+            this.rdbNome = new System.Windows.Forms.RadioButton();
+            this.chkAtivos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridCorrentistas)).BeginInit();
             this.pnlEdicao.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -100,10 +107,10 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.gridCorrentistas.Location = new System.Drawing.Point(12, 164);
+            this.gridCorrentistas.Location = new System.Drawing.Point(12, 219);
             this.gridCorrentistas.Name = "gridCorrentistas";
             this.gridCorrentistas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCorrentistas.Size = new System.Drawing.Size(520, 177);
+            this.gridCorrentistas.Size = new System.Drawing.Size(684, 231);
             this.gridCorrentistas.TabIndex = 4;
             this.gridCorrentistas.TabStop = false;
             // 
@@ -175,9 +182,9 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(538, 164);
+            this.btnAlterar.Location = new System.Drawing.Point(111, 12);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(87, 38);
+            this.btnAlterar.Size = new System.Drawing.Size(87, 31);
             this.btnAlterar.TabIndex = 2;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
@@ -185,19 +192,85 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(538, 208);
+            this.btnExcluir.Location = new System.Drawing.Point(204, 12);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(87, 33);
+            this.btnExcluir.Size = new System.Drawing.Size(87, 31);
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 192);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nome:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(63, 189);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(259, 20);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbCpf);
+            this.groupBox1.Controls.Add(this.rdbNome);
+            this.groupBox1.Location = new System.Drawing.Point(328, 164);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(172, 49);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tipo Consulta";
+            // 
+            // rdbCpf
+            // 
+            this.rdbCpf.AutoSize = true;
+            this.rdbCpf.Location = new System.Drawing.Point(112, 24);
+            this.rdbCpf.Name = "rdbCpf";
+            this.rdbCpf.Size = new System.Drawing.Size(41, 17);
+            this.rdbCpf.TabIndex = 8;
+            this.rdbCpf.Text = "Cpf";
+            this.rdbCpf.UseVisualStyleBackColor = true;
+            this.rdbCpf.CheckedChanged += new System.EventHandler(this.rdbCpf_CheckedChanged);
+            // 
+            // rdbNome
+            // 
+            this.rdbNome.AutoSize = true;
+            this.rdbNome.Checked = true;
+            this.rdbNome.Location = new System.Drawing.Point(27, 24);
+            this.rdbNome.Name = "rdbNome";
+            this.rdbNome.Size = new System.Drawing.Size(53, 17);
+            this.rdbNome.TabIndex = 7;
+            this.rdbNome.TabStop = true;
+            this.rdbNome.Text = "Nome";
+            this.rdbNome.UseVisualStyleBackColor = true;
+            this.rdbNome.CheckedChanged += new System.EventHandler(this.rdbNome_CheckedChanged);
+            // 
+            // chkAtivos
+            // 
+            this.chkAtivos.AutoSize = true;
+            this.chkAtivos.Location = new System.Drawing.Point(522, 188);
+            this.chkAtivos.Name = "chkAtivos";
+            this.chkAtivos.Size = new System.Drawing.Size(100, 17);
+            this.chkAtivos.TabIndex = 11;
+            this.chkAtivos.Text = "Somente Ativos";
+            this.chkAtivos.UseVisualStyleBackColor = true;
+            // 
             // frmCadastroCorrentista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 347);
+            this.ClientSize = new System.Drawing.Size(708, 462);
+            this.Controls.Add(this.chkAtivos);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.pnlEdicao);
@@ -210,7 +283,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCorrentistas)).EndInit();
             this.pnlEdicao.ResumeLayout(false);
             this.pnlEdicao.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -231,5 +307,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
         private System.Windows.Forms.CheckBox chkAtivo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdbCpf;
+        private System.Windows.Forms.RadioButton rdbNome;
+        private System.Windows.Forms.CheckBox chkAtivos;
     }
 }

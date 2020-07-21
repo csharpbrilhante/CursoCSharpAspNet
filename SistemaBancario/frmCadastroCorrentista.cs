@@ -2,6 +2,7 @@
 using SistemaBancario.Negocios;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SistemaBancario
@@ -124,6 +125,44 @@ namespace SistemaBancario
                 HabilitarDesabilitarControles();
                 MessageBox.Show("Correntista excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Func<Correntista, bool> funcFiltro = null;
+
+            if (rdbNome.Checked)
+                funcFiltro = DelegadoConsultaNomeCorentista;
+            else if (rdbCpf.Checked)
+                funcFiltro = DelegadoConsultaPorCpf;
+
+            var _listaTemp = _correntistas.Where(x => funcFiltro(x)).ToList();
+            
+            _datasource.DataSource = _listaTemp;
+        }
+
+        private bool DelegadoConsultaNomeCorentista(Correntista pCorrentista)
+        {
+            return pCorrentista.Nome.StartsWith(textBox1.Text) && 
+                  (chkAtivos.Checked ? pCorrentista.Ativo : pCorrentista != null);
+        }
+
+        private bool DelegadoConsultaPorCpf(Correntista pCorrentista)
+        {
+            return pCorrentista.CpfCnpj.Equals(textBox1.Text) &&
+                  (chkAtivos.Checked ? pCorrentista.Ativo : pCorrentista != null);
+        }
+
+        private void rdbCpf_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            _datasource.DataSource = _correntistas;
+        }
+
+        private void rdbNome_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            _datasource.DataSource = _correntistas;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace SistemaBancario
 {
     public partial class frmCadastroUsuario : Form
     {
+        private string _senhaOriginal;
+
         private Usuario _usuarioSelecionado;
         private readonly UsuarioBll _usuarioBO = new UsuarioBll();
         private List<Usuario> _usuarios;
@@ -132,10 +134,17 @@ namespace SistemaBancario
 
         private void ObterItemSelecionado(bool pNovo = false)
         {
-            if (pNovo)
-                _usuarioSelecionado = new Usuario();
-            else
-                _usuarioSelecionado = (Usuario)gridUsuarios.SelectedRows[0].DataBoundItem;
+            try
+            {
+                if (pNovo)
+                    _usuarioSelecionado = new Usuario();
+                else
+                    _usuarioSelecionado = (Usuario)gridUsuarios.SelectedRows[0].DataBoundItem;
+            }
+            finally
+            {
+                _senhaOriginal = _usuarioSelecionado.Senha ?? string.Empty;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -150,14 +159,22 @@ namespace SistemaBancario
             {
                 _usuarioSelecionado.NomeUsuario = txtNomeUsuario.Text;
                 _usuarioSelecionado.Senha = txtSenha.Text;
-                _usuarioBO.CriarOuAtualizarUsuario(_usuarioSelecionado, MensagemDeErro);
-                LimparCampos();
-                SetarModoReadOnly();
+                if(_usuarioBO.CriarOuAtualizarUsuario(_usuarioSelecionado, MensagemDeErro, ValidarConfirmacaoSenha))
+                {
+                    LimparCampos();
+                    SetarModoReadOnly();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocorreu o erro: {ex.Message}");
             }
+        }
+
+        private void ValidarConfirmacaoSenha()
+        {
+            if(txtSenha.Text != _senhaOriginal && txtSenha.Text != txtConfirmaSenha.Text)
+                throw new Exception("As senhas informadas não conferem.");
         }
 
         private void MensagemDeErro(string pMensagem)
