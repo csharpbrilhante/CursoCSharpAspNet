@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animais", "Animais\Animais.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiosDeTransporte", "MeiosDeTransporte\MeiosDeTransporte.csproj", "{D3B5A5F1-DC68-4B0F-AAAA-9D47E6B068F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADO", "ADO\ADO.csproj", "{D531EEAA-C873-4193-B28D-111DB9E63580}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D3B5A5F1-DC68-4B0F-AAAA-9D47E6B068F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B5A5F1-DC68-4B0F-AAAA-9D47E6B068F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B5A5F1-DC68-4B0F-AAAA-9D47E6B068F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D531EEAA-C873-4193-B28D-111DB9E63580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D531EEAA-C873-4193-B28D-111DB9E63580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D531EEAA-C873-4193-B28D-111DB9E63580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D531EEAA-C873-4193-B28D-111DB9E63580}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
