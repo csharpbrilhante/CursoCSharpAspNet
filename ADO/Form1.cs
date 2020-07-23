@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADO
 {
+
     public partial class Form1 : Form
     {
         readonly DataSet _dataset = new DataSet();
+        
         readonly List<Pessoa> pessoas = new List<Pessoa>()
         {
             new Pessoa()
@@ -39,7 +37,6 @@ namespace ADO
                 Nome = "Filipe de Souza",
                 Pai = 3
             }
-
         };
 
         public Form1()
@@ -55,12 +52,12 @@ namespace ADO
             var dtPais = new DataTable("Pais");
             var dtFilhos = new DataTable("Filhos");
 
-            var colsPai = new List<DataColumn>() {
-                new DataColumn("Codigo"),
-                new DataColumn("Nome"), 
-                new DataColumn("Cpf"),
-                new DataColumn("Pai")
-            };
+            var colsPai = new List<DataColumn>();
+
+            colsPai.Add(new DataColumn("Codigo"));
+            colsPai.Add(new DataColumn("Nome"));
+            colsPai.Add(new DataColumn("Cpf"));
+            colsPai.Add(new DataColumn("Pai"));
 
             var colsFilho = new List<DataColumn>() {
                 new DataColumn("Codigo"),
@@ -82,16 +79,17 @@ namespace ADO
             var pais = pessoas.Where(x => x.Pai == null).ToList();
             var filhos = pessoas.Where(x => x.Pai != null).ToList();
 
-            Dictionary<string, IEnumerable<Pessoa>> fontesDeDados = new Dictionary<string, IEnumerable<Pessoa>>();
+            var fontesDeDados = new Dictionary<string, IEnumerable<Pessoa>>();
 
             fontesDeDados.Add("Pais", pais);
             fontesDeDados.Add("Filhos", filhos);
-
+            
             foreach (var fonte in fontesDeDados)
             {
                 fonte.Value.ToList().ForEach(pessoa =>
                 {
                     DataTable tabela = null;
+
                     if (fonte.Key == "Pais")
                         tabela = dtPais;
 
@@ -122,12 +120,11 @@ namespace ADO
         }
     }
 
-    class Pessoa
+    public class Pessoa
     {
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public int? Pai { get; set; }
-
     }
 }

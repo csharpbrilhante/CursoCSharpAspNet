@@ -40,15 +40,16 @@
             this.gridPais.Location = new System.Drawing.Point(12, 12);
             this.gridPais.Name = "gridPais";
             this.gridPais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridPais.Size = new System.Drawing.Size(590, 234);
+            this.gridPais.Size = new System.Drawing.Size(590, 198);
             this.gridPais.TabIndex = 0;
             // 
             // gridFilhos
             // 
             this.gridFilhos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridFilhos.Location = new System.Drawing.Point(12, 252);
+            this.gridFilhos.Location = new System.Drawing.Point(12, 216);
             this.gridFilhos.Name = "gridFilhos";
-            this.gridFilhos.Size = new System.Drawing.Size(590, 96);
+            this.gridFilhos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridFilhos.Size = new System.Drawing.Size(590, 132);
             this.gridFilhos.TabIndex = 2;
             // 
             // Form1
