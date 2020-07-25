@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Content Include="crebas.sql" />
     <Content Include="FormAntigo.txt">
       <SubType>Form</SubType>
     </Content>
