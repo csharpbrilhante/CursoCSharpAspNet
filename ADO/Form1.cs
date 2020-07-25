@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -46,77 +47,23 @@ namespace ADO
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //se fossemos buscar do banco de dados, usariamos o DataAdapter
-            //um data adapter para cada dataset
-
-            var dtPais = new DataTable("Pais");
-            var dtFilhos = new DataTable("Filhos");
-
-            var colsPai = new List<DataColumn>();
-
-            colsPai.Add(new DataColumn("Codigo"));
-            colsPai.Add(new DataColumn("Nome"));
-            colsPai.Add(new DataColumn("Cpf"));
-            colsPai.Add(new DataColumn("Pai"));
-
-            var colsFilho = new List<DataColumn>() {
-                new DataColumn("Codigo"),
-                new DataColumn("Nome"),
-                new DataColumn("Cpf"),
-                new DataColumn("Pai")
-            };
-
-            foreach (var col in colsPai)
+            using(var conexao = new SqlConnection("Server=localhost;Database=Escolar;User Id=sa;Password=DevEngegraph;"))
             {
-                dtPais.Columns.Add(col);
+                var adapter = new SqlDataAdapter();
+                adapter.SelectCommand = new SqlCommand("SELECT * FROM PESSOAS", conexao);
+                adapter.Fill(_dataset, "Pessoas");
+                adapter.SelectCommand = new SqlCommand("SELECT * FROM NOTAS", conexao);
+                adapter.Fill(_dataset, "Notas");
+                //invocar o dispose
             }
 
-            foreach (var col in colsFilho)
-            {
-                dtFilhos.Columns.Add(col);
-            }
+            var colunaPk = _dataset.Tables["Pessoas"].Columns["PessoaId"];
+            var colunaFk = _dataset.Tables["Notas"].Columns["PessoaId"];
 
-            var pais = pessoas.Where(x => x.Pai == null).ToList();
-            var filhos = pessoas.Where(x => x.Pai != null).ToList();
+            _dataset.Relations.Add(new DataRelation("Pessoas_FK_Notas", colunaPk, colunaFk));
 
-            var fontesDeDados = new Dictionary<string, IEnumerable<Pessoa>>();
-
-            fontesDeDados.Add("Pais", pais);
-            fontesDeDados.Add("Filhos", filhos);
-            
-            foreach (var fonte in fontesDeDados)
-            {
-                fonte.Value.ToList().ForEach(pessoa =>
-                {
-                    DataTable tabela = null;
-
-                    if (fonte.Key == "Pais")
-                        tabela = dtPais;
-
-                    if (fonte.Key == "Filhos")
-                        tabela = dtFilhos;
-
-                    var linha = tabela.NewRow();
-                    
-                    linha["Codigo"] = pessoa.Id;
-                    linha["Nome"] = pessoa.Nome;
-                    linha["Cpf"] = pessoa.Cpf;
-                    linha["Pai"] = pessoa.Pai;
-
-                    tabela.Rows.Add(linha);
-                });
-            }
-
-            _dataset.Tables.Add(dtPais);
-            _dataset.Tables.Add(dtFilhos);
-
-            var colunaPk = _dataset.Tables["Pais"].Columns["Codigo"];
-            var colunaFk = _dataset.Tables["Filhos"].Columns["Pai"];
-
-            _dataset.Relations.Add(new DataRelation("FK_Pais_Filhos", colunaPk, colunaFk));
-
-            gridPais.DataSource = new BindingSource(_dataset, "Pais");
-            gridFilhos.DataSource = new BindingSource(gridPais.DataSource, "FK_Pais_Filhos");
+            gridPessoas.DataSource = new BindingSource(_dataset, "Pessoas");
+            gridNotas.DataSource = new BindingSource(gridPessoas.DataSource, "Pessoas_FK_Notas");
         }
     }
 

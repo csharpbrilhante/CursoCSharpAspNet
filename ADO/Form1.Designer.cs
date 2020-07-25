@@ -28,50 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridPais = new System.Windows.Forms.DataGridView();
-            this.gridFilhos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPais)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFilhos)).BeginInit();
+            this.gridPessoas = new System.Windows.Forms.DataGridView();
+            this.gridNotas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNotas)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridPais
+            // gridPessoas
             // 
-            this.gridPais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPais.Location = new System.Drawing.Point(12, 12);
-            this.gridPais.Name = "gridPais";
-            this.gridPais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridPais.Size = new System.Drawing.Size(590, 198);
-            this.gridPais.TabIndex = 0;
+            this.gridPessoas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridPessoas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPessoas.Location = new System.Drawing.Point(12, 12);
+            this.gridPessoas.Name = "gridPessoas";
+            this.gridPessoas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridPessoas.Size = new System.Drawing.Size(590, 164);
+            this.gridPessoas.TabIndex = 0;
             // 
-            // gridFilhos
+            // gridNotas
             // 
-            this.gridFilhos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridFilhos.Location = new System.Drawing.Point(12, 216);
-            this.gridFilhos.Name = "gridFilhos";
-            this.gridFilhos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridFilhos.Size = new System.Drawing.Size(590, 132);
-            this.gridFilhos.TabIndex = 2;
+            this.gridNotas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridNotas.Location = new System.Drawing.Point(12, 182);
+            this.gridNotas.Name = "gridNotas";
+            this.gridNotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridNotas.Size = new System.Drawing.Size(590, 166);
+            this.gridNotas.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 359);
-            this.Controls.Add(this.gridFilhos);
-            this.Controls.Add(this.gridPais);
+            this.Controls.Add(this.gridNotas);
+            this.Controls.Add(this.gridPessoas);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridPais)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFilhos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNotas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridPais;
-        private System.Windows.Forms.DataGridView gridFilhos;
+        private System.Windows.Forms.DataGridView gridPessoas;
+        private System.Windows.Forms.DataGridView gridNotas;
     }
 }
 
