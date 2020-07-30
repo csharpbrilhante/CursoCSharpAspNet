@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiosDeTransporte", "MeiosD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADO", "ADO\ADO.csproj", "{D531EEAA-C873-4193-B28D-111DB9E63580}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.Utils", "SistemaBancario.Utils\SistemaBancario.Utils.csproj", "{68B62D06-4E08-4B9D-80ED-4416762FBCA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.Cripto", "SistemaBancario.Cripto\SistemaBancario.Cripto.csproj", "{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{D531EEAA-C873-4193-B28D-111DB9E63580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D531EEAA-C873-4193-B28D-111DB9E63580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D531EEAA-C873-4193-B28D-111DB9E63580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B62D06-4E08-4B9D-80ED-4416762FBCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B62D06-4E08-4B9D-80ED-4416762FBCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B62D06-4E08-4B9D-80ED-4416762FBCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B62D06-4E08-4B9D-80ED-4416762FBCA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
