@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SistemaBancario.Repositorio;
+using System;
 using System.Windows.Forms;
 
 namespace SistemaBancario
@@ -16,7 +14,20 @@ namespace SistemaBancario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
+            using(var conexao = new Conexao())
+            {
+                try
+                {
+                    conexao.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao executar a migração de dados:\n{ex.Message}");
+                    return;
+                }
+            }
+            
             var login = new frmLogin();
             if(login.ShowDialog() == DialogResult.OK)
             {
