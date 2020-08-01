@@ -6,8 +6,6 @@ namespace SistemaBancario.Repositorio
 {
     public class Conexao : IDisposable
     {
-        //na proxima falaremos sobre a transação
-        private SQLiteTransaction transacao;
         protected SQLiteConnection conexao;
 
         public Conexao()
@@ -18,7 +16,6 @@ namespace SistemaBancario.Repositorio
         public SQLiteCommand ObterComando()
         {
             conexao.Open();
-            transacao = conexao.BeginTransaction();
             return conexao.CreateCommand();
         }
 
@@ -26,22 +23,21 @@ namespace SistemaBancario.Repositorio
         {
             conexao.Close();
             conexao.Dispose();
-            transacao.Dispose();
-            transacao = null;
             conexao = null;
         }
 
         public void Migrate()
         {
+            var comando = this.ObterComando();
             try
             {
                 var migracoes = new Dictionary<int, string>
-            {
-                { 1, versao01() },
-                { 2, versao02() }
-            };
-
-                var comando = this.ObterComando();
+                {
+                    { 1, versao01() },
+                    { 2, versao02() }
+                };
+                
+                comando.Transaction = comando.Connection.BeginTransaction();
                 comando.CommandText = "select coalesce(max(versaoid), 0) + 1 from versao";
 
                 //na verdade, é melhor tratar a proxima versão a ser aplicada
@@ -62,11 +58,11 @@ namespace SistemaBancario.Repositorio
                     comando.ExecuteNonQuery();
                 }
 
-                transacao.Commit();
+                comando.Transaction.Commit();
             }
             catch
             {
-                transacao.Rollback();
+                comando.Transaction.Rollback();
                 throw;
             }
         }
