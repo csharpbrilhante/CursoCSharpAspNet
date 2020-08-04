@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Db\DbCommandEx.cs" />
     <Compile Include="Seguranca\Cripto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

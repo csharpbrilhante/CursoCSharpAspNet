@@ -37,6 +37,11 @@ namespace SistemaBancario.Negocios
             return _dataset.Read();
         }
 
+        public Usuario ObterPeloNomeUsuario(string pNomeUsuario)
+        {
+            return _dataset.Read().FirstOrDefault(usuario => usuario.NomeUsuario.Equals(pNomeUsuario));
+        }
+
         public void ExcluirUsuario(Usuario pUsuario)
         {
             _dataset.Delete(pUsuario);

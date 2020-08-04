@@ -36,7 +36,7 @@ namespace SistemaBancario.Repositorio
                     { 1, versao01() },
                     { 2, versao02() }
                 };
-                
+
                 comando.Transaction = comando.Connection.BeginTransaction();
                 comando.CommandText = "select coalesce(max(versaoid), 0) + 1 from versao";
 
@@ -65,6 +65,10 @@ namespace SistemaBancario.Repositorio
                 comando.Transaction.Rollback();
                 throw;
             }
+            finally
+            {
+                comando.Dispose();
+            }
         }
 
         public string versao02()
@@ -75,7 +79,7 @@ namespace SistemaBancario.Repositorio
                         );";
         }
 
-            public string versao01()
+        public string versao01()
         {
             var senhaCriptografada = "C6lw+S97VY7utO5Zhn1RemtNKYDL7RLbFgeXSEtMzFc0rlbWHMsB3siYoUmxr2jKLjGix0vS8EdFoYylHc54GFORuSOLg76oFpsO3e4ghIEknXQ4r4QfyzH5O3+6p9S7";
 

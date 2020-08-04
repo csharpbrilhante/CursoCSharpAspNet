@@ -38,12 +38,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.gridUsuarios = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlEdicao = new System.Windows.Forms.Panel();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsuarios)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlEdicao.SuspendLayout();
@@ -148,6 +149,14 @@
             this.gridUsuarios.Size = new System.Drawing.Size(537, 304);
             this.gridUsuarios.TabIndex = 12;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "NomeUsuario";
+            this.Column1.HeaderText = "Nome do Usuário";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 300;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -168,15 +177,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 80);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nome do usuário";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -195,21 +195,35 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Confirmar Senha";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome do usuário";
+            // 
             // pnlEdicao
             // 
+            this.pnlEdicao.Controls.Add(this.checkBox1);
             this.pnlEdicao.Controls.Add(this.tableLayoutPanel1);
             this.pnlEdicao.Location = new System.Drawing.Point(12, 41);
             this.pnlEdicao.Name = "pnlEdicao";
             this.pnlEdicao.Size = new System.Drawing.Size(537, 102);
             this.pnlEdicao.TabIndex = 14;
             // 
-            // Column1
+            // checkBox1
             // 
-            this.Column1.DataPropertyName = "NomeUsuario";
-            this.Column1.HeaderText = "Nome do Usuário";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 300;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(330, 70);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(50, 17);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Ativo";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // frmCadastroUsuario
             // 
@@ -233,6 +247,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.pnlEdicao.ResumeLayout(false);
+            this.pnlEdicao.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -255,5 +270,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel pnlEdicao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

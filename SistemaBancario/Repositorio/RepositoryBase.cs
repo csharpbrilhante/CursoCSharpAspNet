@@ -1,6 +1,7 @@
 ﻿using SistemaBancario.Contratos;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,14 @@ namespace SistemaBancario.Repositorio
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T: IModelo
     {
+        protected Conexao _conexao;
+        protected DbCommand _comando;
+        protected string NomeTabela;
         protected List<T> lista;
 
         public RepositoryBase()
         {
-
+            _conexao = new Conexao();
         }
 
         public virtual void Create(T pObjeto)
