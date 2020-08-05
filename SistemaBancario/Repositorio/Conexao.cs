@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaBancario.Utils.Db;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 
@@ -34,7 +35,8 @@ namespace SistemaBancario.Repositorio
                 var migracoes = new Dictionary<int, string>
                 {
                     { 1, versao01() },
-                    { 2, versao02() }
+                    { 2, versao02() },
+                    { 3, versao03() }
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -56,6 +58,9 @@ namespace SistemaBancario.Repositorio
                 {
                     comando.CommandText = migracoes[migracao];
                     comando.ExecuteNonQuery();
+                    //atualiza a versão, coma ultima versão aplicada
+                    comando.CommandText = $"INSERT INTO VERSAO (VERSAOID) VALUES ({migracao});";
+                    comando.ExecuteNonQuery();
                 }
 
                 comando.Transaction.Commit();
@@ -69,6 +74,12 @@ namespace SistemaBancario.Repositorio
             {
                 comando.Dispose();
             }
+        }
+
+        public string versao03()
+        {
+            return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
+                    ('USUARIO', (SELECT MAX(USUARIOID) FROM USUARIO));";
         }
 
         public string versao02()
@@ -111,9 +122,7 @@ namespace SistemaBancario.Repositorio
 
                         CREATE UNIQUE INDEX IF NOT EXISTS [CORRENTISTA_CPFCNPJ_CPJCNPJ] ON [CORRENTISTA](
                         [CPFCNPJ]  ASC
-                        );
-                        
-                        INSERT INTO VERSAO (VERSAOID) VALUES (1);";
+                        );";
         }
     }
 }

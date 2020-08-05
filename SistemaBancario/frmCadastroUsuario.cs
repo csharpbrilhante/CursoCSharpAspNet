@@ -129,6 +129,7 @@ namespace SistemaBancario
             finally
             {
                 SetarModoReadOnly();
+                CarregarLista();
             }
         }
 
@@ -168,6 +169,10 @@ namespace SistemaBancario
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocorreu o erro: {ex.Message}");
+            }
+            finally
+            {
+                CarregarLista();
             }
         }
 

@@ -1,10 +1,12 @@
 ﻿using SistemaBancario.Contratos;
+using SistemaBancario.Utils.Db;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SistemaBancario.Repositorio
 {
@@ -12,7 +14,10 @@ namespace SistemaBancario.Repositorio
     {
         protected Conexao _conexao;
         protected DbCommand _comando;
-        protected string NomeTabela;
+
+        protected string Tabela;
+        protected string ChavePrimaria;
+
         protected List<T> lista;
 
         public RepositoryBase()
@@ -39,8 +44,19 @@ namespace SistemaBancario.Repositorio
             lista.Remove(pObjeto);
         }
 
-        
-
-        
+        protected virtual int ObterProxSequencial()
+        {
+            var sql = $"SELECT MAX({ChavePrimaria}) + 1 FROM {Tabela}";
+            var comando = _conexao.ObterComando();
+            try
+            {
+                comando.CommandText = sql;
+                return System.Convert.ToInt32(comando.ExecuteScalar());
+            }
+            finally
+            {
+                comando.Liberar();
+            }
+        }
     }
 }

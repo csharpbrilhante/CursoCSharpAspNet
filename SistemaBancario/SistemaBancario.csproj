@@ -120,7 +120,6 @@
     <Compile Include="Repositorio\CorrentistaRepository.cs" />
     <Compile Include="Repositorio\DBMem.cs" />
     <Compile Include="Repositorio\RepositoryBase.cs" />
-    <Compile Include="Repositorio\RepositoryDatabase.cs" />
     <Compile Include="Repositorio\UsuarioRepository.cs" />
     <EmbeddedResource Include="frmCadastroCorrentista.resx">
       <DependentUpon>frmCadastroCorrentista.cs</DependentUpon>

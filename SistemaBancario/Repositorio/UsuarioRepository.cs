@@ -1,5 +1,6 @@
 ﻿using SistemaBancario.Modelos;
 using SistemaBancario.Utils.Db;
+using SistemaBancario.Utils.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -11,12 +12,13 @@ namespace SistemaBancario.Repositorio
     {
         public UsuarioRepository() : base()
         {
-            NomeTabela = "USUARIO";
+            Tabela = "USUARIO";
+            ChavePrimaria = "USUARIOID";
         }
 
         public override void Create(Usuario pObjeto)
         {
-            pObjeto.Id = lista?.Count > 0 ? lista.Max(x => x.Id) + 1 : 1;
+            pObjeto.Id = ObterProxSequencial();
             pObjeto.DataCriacao = DateTime.Now;
 
             var sql = @"INSERT INTO USUARIO (USUARIOID, NOMEUSUARIO, SENHA, ATIVO, DATACRIACAO) 
@@ -28,12 +30,10 @@ namespace SistemaBancario.Repositorio
                 _comando.CommandText = sql;
                 _comando.Parameters.Add(new SQLiteParameter("USUARIOID", pObjeto.Id));
                 _comando.Parameters.Add(new SQLiteParameter("NOMEUSUARIO", pObjeto.NomeUsuario));
-                _comando.Parameters.Add(new SQLiteParameter("SENHA", pObjeto.Senha));
+                _comando.Parameters.Add(new SQLiteParameter("SENHA", Cripto.Encrypt(pObjeto.Senha)));
                 _comando.Parameters.Add(new SQLiteParameter("ATIVO", pObjeto.Ativo ? 1 : 0));
                 _comando.Parameters.Add(new SQLiteParameter("DATACRIACAO", pObjeto.DataCriacao));
                 _comando.ExecuteNonQuery();
-
-                lista.Add(pObjeto);
             }
             finally
             {
@@ -43,9 +43,41 @@ namespace SistemaBancario.Repositorio
 
         public override void Update(Usuario pObjeto)
         {
-            var usuarioAtualizar = lista.FirstOrDefault(x => x.Id == pObjeto.Id);
-            usuarioAtualizar.NomeUsuario = pObjeto.NomeUsuario;
-            usuarioAtualizar.Senha = pObjeto.Senha;
+            var sql = @"UPDATE USUARIO SET NOMEUSUARIO = @NOMEUSUARIO, SENHA = @NOMEUSUARIO, ATIVO = @ATIVO 
+                        WHERE USUARIOID = @USUARIOID";
+
+            try
+            {
+                _comando = _conexao.ObterComando();
+                _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("USUARIOID", pObjeto.Id));
+                _comando.Parameters.Add(new SQLiteParameter("NOMEUSUARIO", pObjeto.NomeUsuario));
+                _comando.Parameters.Add(new SQLiteParameter("SENHA", Cripto.Encrypt(pObjeto.Senha)));
+                _comando.Parameters.Add(new SQLiteParameter("ATIVO", pObjeto.Ativo ? 1 : 0));
+                _comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                _comando.Liberar();
+            }
+        }
+
+        public override void Delete(Usuario pObjeto)
+        {
+            var sql = @"DELETE FROM USUARIO 
+                        WHERE USUARIOID = @USUARIOID";
+
+            try
+            {
+                _comando = _conexao.ObterComando();
+                _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("USUARIOID", pObjeto.Id));
+                _comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                _comando.Liberar();
+            }
         }
 
         public override List<Usuario> Read()
@@ -54,7 +86,7 @@ namespace SistemaBancario.Repositorio
             lista = new List<Usuario>();
             try
             {
-                _comando.CommandText = $"Select * from {NomeTabela}";
+                _comando.CommandText = $"SELECT * FROM USUARIO";
 
                 using (var reader = _comando.ExecuteReader())
                 {
@@ -64,7 +96,7 @@ namespace SistemaBancario.Repositorio
                         {
                             Id = Convert.ToInt32(reader["USUARIOID"]),
                             NomeUsuario = reader["NOMEUSUARIO"].ToString(),
-                            Senha = reader["SENHA"].ToString(),
+                            Senha = Cripto.Decrypt(reader["SENHA"].ToString()),
                             Ativo = Convert.ToInt32(reader["ATIVO"] ?? 0) == 1,
                             DataCriacao = Convert.ToDateTime(reader["DATACRIACAO"])
                         });
