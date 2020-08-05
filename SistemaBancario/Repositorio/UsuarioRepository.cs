@@ -43,7 +43,7 @@ namespace SistemaBancario.Repositorio
 
         public override void Update(Usuario pObjeto)
         {
-            var sql = @"UPDATE USUARIO SET NOMEUSUARIO = @NOMEUSUARIO, SENHA = @NOMEUSUARIO, ATIVO = @ATIVO 
+            var sql = @"UPDATE USUARIO SET NOMEUSUARIO = @NOMEUSUARIO, SENHA = @SENHA, ATIVO = @ATIVO 
                         WHERE USUARIOID = @USUARIOID";
 
             try

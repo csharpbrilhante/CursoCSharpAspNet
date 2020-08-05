@@ -79,7 +79,7 @@ namespace SistemaBancario.Repositorio
         public string versao03()
         {
             return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
-                    ('USUARIO', (SELECT MAX(USUARIOID) FROM USUARIO));";
+                    ('USUARIO', (SELECT COALESCE(MAX(USUARIOID), 1) FROM USUARIO));";
         }
 
         public string versao02()
