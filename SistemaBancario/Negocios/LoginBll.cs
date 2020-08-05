@@ -16,7 +16,7 @@ namespace SistemaBancario.Negocios
             var usuarioBO = new UsuarioBll();
             var usuario = usuarioBO.ObterPeloNomeUsuario(pUsuario);
 
-            if(usuario != null && Cripto.Decrypt(usuario.Senha).Equals(pSenha))
+            if(usuario != null && usuario.Senha.Equals(pSenha))
             {
                 UsuarioLogado = pUsuario;
                 return true;
