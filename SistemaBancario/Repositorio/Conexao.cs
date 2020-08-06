@@ -36,7 +36,8 @@ namespace SistemaBancario.Repositorio
                 {
                     { 1, versao01() },
                     { 2, versao02() },
-                    { 3, versao03() }
+                    { 3, versao03() },
+                    { 4, versao04() }
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -74,6 +75,12 @@ namespace SistemaBancario.Repositorio
             {
                 comando.Dispose();
             }
+        }
+
+        public string versao04()
+        {
+            return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
+                    ('CORRENTISTA', 0);";
         }
 
         public string versao03()

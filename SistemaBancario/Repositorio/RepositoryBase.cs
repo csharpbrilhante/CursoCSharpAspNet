@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SistemaBancario.Repositorio
 {
@@ -16,7 +13,6 @@ namespace SistemaBancario.Repositorio
         protected DbCommand _comando;
 
         protected string Tabela;
-        protected string ChavePrimaria;
 
         protected List<T> lista;
 
@@ -46,12 +42,15 @@ namespace SistemaBancario.Repositorio
 
         protected virtual int ObterProxSequencial()
         {
-            var sql = $"SELECT MAX({ChavePrimaria}) + 1 FROM {Tabela}";
+            var sql = $"SELECT VALOR + 1 FROM SEQUENCIAL WHERE SEQUENCIALID = '{Tabela}'";
             var comando = _conexao.ObterComando();
             try
             {
                 comando.CommandText = sql;
-                return System.Convert.ToInt32(comando.ExecuteScalar());
+                var sequencial = System.Convert.ToInt32(comando.ExecuteScalar());
+                comando.CommandText = $"UPDATE SEQUENCIAL SET VALOR = {sequencial} WHERE SEQUENCIALID = '{Tabela}'";
+                comando.ExecuteNonQuery();
+                return sequencial;
             }
             finally
             {

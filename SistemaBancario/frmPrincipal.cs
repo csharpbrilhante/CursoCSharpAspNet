@@ -42,5 +42,11 @@ namespace SistemaBancario
             var frmCadastroUsuario = new frmCadastroUsuario();
             frmCadastroUsuario.ShowDialog();
         }
+
+        private void mnContaCorrente_Click(object sender, EventArgs e)
+        {
+            var frmListaContaCorrente = new frmListaContaCorrente();
+            frmListaContaCorrente.ShowDialog();
+        }
     }
 }

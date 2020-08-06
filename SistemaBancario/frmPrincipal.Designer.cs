@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -43,19 +42,11 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnSaldo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExtratoPeriodo = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SistemaBancario.Properties.Resources.jupiterLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(33, 62);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(259, 128);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -128,6 +119,7 @@
             this.mnContaCorrente.Name = "mnContaCorrente";
             this.mnContaCorrente.Size = new System.Drawing.Size(221, 22);
             this.mnContaCorrente.Text = "Cadastro de Conta Corrente";
+            this.mnContaCorrente.Click += new System.EventHandler(this.mnContaCorrente_Click);
             // 
             // mnUsuario
             // 
@@ -171,6 +163,15 @@
             this.mnExtratoPeriodo.Size = new System.Drawing.Size(176, 22);
             this.mnExtratoPeriodo.Text = "Extrato Por Período";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaBancario.Properties.Resources.jupiterLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(33, 62);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(259, 128);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,11 +185,11 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Bancário";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

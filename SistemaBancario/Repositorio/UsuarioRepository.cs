@@ -13,7 +13,6 @@ namespace SistemaBancario.Repositorio
         public UsuarioRepository() : base()
         {
             Tabela = "USUARIO";
-            ChavePrimaria = "USUARIOID";
         }
 
         public override void Create(Usuario pObjeto)

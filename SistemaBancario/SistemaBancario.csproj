@@ -85,6 +85,12 @@
   <ItemGroup>
     <Compile Include="Contratos\IModelo.cs" />
     <Compile Include="Contratos\IRepository.cs" />
+    <Compile Include="frmCadastroContaCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroContaCorrente.Designer.cs">
+      <DependentUpon>frmCadastroContaCorrente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCadastroCorrentista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="frmCadastroUsuario.Designer.cs">
       <DependentUpon>frmCadastroUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaContaCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaContaCorrente.Designer.cs">
+      <DependentUpon>frmListaContaCorrente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -118,14 +130,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Repositorio\CorrentistaRepository.cs" />
-    <Compile Include="Repositorio\DBMem.cs" />
     <Compile Include="Repositorio\RepositoryBase.cs" />
     <Compile Include="Repositorio\UsuarioRepository.cs" />
+    <EmbeddedResource Include="frmCadastroContaCorrente.resx">
+      <DependentUpon>frmCadastroContaCorrente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroCorrentista.resx">
       <DependentUpon>frmCadastroCorrentista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroUsuario.resx">
       <DependentUpon>frmCadastroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaContaCorrente.resx">
+      <DependentUpon>frmListaContaCorrente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

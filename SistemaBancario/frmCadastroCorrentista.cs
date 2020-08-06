@@ -49,6 +49,10 @@ namespace SistemaBancario
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
             }
+            finally
+            {
+                CarregarLista();
+            }
         }
 
         private void CarregarLista()
@@ -117,13 +121,20 @@ namespace SistemaBancario
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            ObterItemSelecionado();
-            if (MessageBox.Show("Deseja excluir o correntista?", "Confirmar exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                _correntistaBO.ExcluirCorrentista(_correntistaSelecionado);
-                _correntistaSelecionado = null;
-                HabilitarDesabilitarControles();
-                MessageBox.Show("Correntista excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ObterItemSelecionado();
+                if (MessageBox.Show("Deseja excluir o correntista?", "Confirmar exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _correntistaBO.ExcluirCorrentista(_correntistaSelecionado);
+                    _correntistaSelecionado = null;
+                    HabilitarDesabilitarControles();
+                    MessageBox.Show("Correntista excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            finally
+            {
+                CarregarLista();
             }
         }
 
