@@ -38,6 +38,45 @@ namespace SistemaBancario.Repositorio
             }
         }
 
+        public override void Delete(Correntista pObjeto)
+        {
+            var sql = @"DELETE FROM CORRENTISTA 
+                        WHERE CORRENTISTAID = @CORRENTISTAID";
+
+            try
+            {
+                _comando = _conexao.ObterComando();
+                _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("CORRENTISTAID", pObjeto.Id));
+                _comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                _comando.Liberar();
+            }
+        }
+
+        public override void Update(Correntista pObjeto)
+        {
+            var sql = @"UPDATE CORRENTISTA SET NOME = @NOME, CPFCNPJ = @CPFCNPJ, ATIVO = @ATIVO 
+                        WHERE CORRENTISTAID = @CORRENTISTAID";
+
+            try
+            {
+                _comando = _conexao.ObterComando();
+                _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("CORRENTISTAID", pObjeto.Id));
+                _comando.Parameters.Add(new SQLiteParameter("NOME", pObjeto.Nome));
+                _comando.Parameters.Add(new SQLiteParameter("CPFCNPJ", pObjeto.CpfCnpj));
+                _comando.Parameters.Add(new SQLiteParameter("ATIVO", pObjeto.Ativo ? 1 : 0));
+                _comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                _comando.Liberar();
+            }
+        }
+
         public override List<Correntista> Read()
         {
             lista = new List<Correntista>();
@@ -71,14 +110,6 @@ namespace SistemaBancario.Repositorio
             {
                 _comando.Liberar();
             }
-        }
-
-        public override void Update(Correntista pObjeto)
-        {
-            var correntistaAtualizar = lista.FirstOrDefault(x => x.Id == pObjeto.Id);
-
-            correntistaAtualizar.Nome = pObjeto.Nome;
-            correntistaAtualizar.CpfCnpj = pObjeto.CpfCnpj;
         }
     }
 }
