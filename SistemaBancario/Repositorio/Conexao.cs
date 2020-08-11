@@ -37,7 +37,9 @@ namespace SistemaBancario.Repositorio
                     { 1, versao01() },
                     { 2, versao02() },
                     { 3, versao03() },
-                    { 4, versao04() }
+                    { 4, versao04() },
+                    { 5, versao05() },
+                    { 6, versao06() },
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -75,6 +77,23 @@ namespace SistemaBancario.Repositorio
             {
                 comando.Dispose();
             }
+        }
+
+        public string versao06()
+        {
+            return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
+                    ('CONTACORRENTE', 0);";
+        }
+
+        public string versao05()
+        {
+            return @"CREATE TABLE CONTACORRENTE(
+                          CONTACORRENTEID INTEGER PRIMARY KEY AUTOINCREMENT,
+                          AGENCIA TEXT NOT NULL,
+                          NUMCONTA TEXT NOT NULL,
+                          CORRENTISTAID INTEGER NOT NULL,
+                          FOREIGN KEY(CORRENTISTAID) REFERENCES CORRENTISTA(CORRENTISTAID)
+                    );";
         }
 
         public string versao04()

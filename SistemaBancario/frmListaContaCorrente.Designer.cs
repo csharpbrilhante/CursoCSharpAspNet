@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -38,23 +38,24 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnLançamento = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnExtrato = new System.Windows.Forms.ToolStripMenuItem();
             this.mnAlterar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnLançamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnExtrato = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnNovo
             // 
-            this.button1.Location = new System.Drawing.Point(15, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Novo";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNovo.Location = new System.Drawing.Point(15, 12);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(79, 30);
+            this.btnNovo.TabIndex = 0;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // button2
             // 
@@ -123,18 +124,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(173, 98);
             // 
-            // mnLançamento
-            // 
-            this.mnLançamento.Name = "mnLançamento";
-            this.mnLançamento.Size = new System.Drawing.Size(172, 22);
-            this.mnLançamento.Text = "&Novo Lançamento";
-            // 
-            // mnExtrato
-            // 
-            this.mnExtrato.Name = "mnExtrato";
-            this.mnExtrato.Size = new System.Drawing.Size(172, 22);
-            this.mnExtrato.Text = "&Consulta Extrato";
-            // 
             // mnAlterar
             // 
             this.mnAlterar.Name = "mnAlterar";
@@ -152,6 +141,18 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
+            // mnLançamento
+            // 
+            this.mnLançamento.Name = "mnLançamento";
+            this.mnLançamento.Size = new System.Drawing.Size(172, 22);
+            this.mnLançamento.Text = "&Novo Lançamento";
+            // 
+            // mnExtrato
+            // 
+            this.mnExtrato.Name = "mnExtrato";
+            this.mnExtrato.Size = new System.Drawing.Size(172, 22);
+            this.mnExtrato.Text = "&Consulta Extrato";
+            // 
             // frmListaContaCorrente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,8 +161,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNovo);
             this.Name = "frmListaContaCorrente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de contas correntes cadastradas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -171,7 +173,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;

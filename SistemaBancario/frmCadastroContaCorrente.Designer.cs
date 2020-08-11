@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxCorrentistas = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,13 +54,13 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // comboBox1
+            // cbxCorrentistas
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(327, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cbxCorrentistas.FormattingEnabled = true;
+            this.cbxCorrentistas.Location = new System.Drawing.Point(16, 123);
+            this.cbxCorrentistas.Name = "cbxCorrentistas";
+            this.cbxCorrentistas.Size = new System.Drawing.Size(327, 21);
+            this.cbxCorrentistas.TabIndex = 2;
             // 
             // textBox2
             // 
@@ -116,10 +116,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxCorrentistas);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "frmCadastroContaCorrente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCadastroContaCorrente";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,7 +131,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxCorrentistas;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
