@@ -13,7 +13,7 @@ namespace SistemaBancario.Repositorio
     {
         public ContaCorrenteRepository(): base()
         {
-            Tabela = "ContaCorrentista";
+            Tabela = "CONTACORRENTE";
         }
 
         public override void Create(ContaCorrente pObjeto)
@@ -68,6 +68,8 @@ namespace SistemaBancario.Repositorio
                             Ativo = Convert.ToInt16(reader["ATIVO"] ?? 0) == 1,
                             DataCriacao = Convert.ToDateTime(reader["DATACRIACAO"])
                         };
+
+                        lista.Add(contacorrente);
                     }
 
                     return lista;
@@ -93,6 +95,7 @@ namespace SistemaBancario.Repositorio
             {
                 _comando = _conexao.ObterComando();
                 _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("CONTACORRENTEID", pObjeto.Id));
                 _comando.Parameters.Add(new SQLiteParameter("AGENCIA", pObjeto.Agencia));
                 _comando.Parameters.Add(new SQLiteParameter("NUMCONTA", pObjeto.NumConta));
                 _comando.Parameters.Add(new SQLiteParameter("CORRENTISTAID", pObjeto.CorrentistaId));

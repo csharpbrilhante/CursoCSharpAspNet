@@ -32,18 +32,18 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridContasCorrentes = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnAlterar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnLançamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExtrato = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CorrentistaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CorrentistaCpfCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridContasCorrentes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Alterar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -75,43 +76,23 @@
             this.button3.Text = "Excluir";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // gridContasCorrentes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridContasCorrentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridContasCorrentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridContasCorrentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(559, 325);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Agência";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Número Conta";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Nome do Correntista";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "CPF ou CNPJ";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.CorrentistaNome,
+            this.CorrentistaCpfCnpj});
+            this.gridContasCorrentes.ContextMenuStrip = this.contextMenuStrip1;
+            this.gridContasCorrentes.Location = new System.Drawing.Point(14, 59);
+            this.gridContasCorrentes.Name = "gridContasCorrentes";
+            this.gridContasCorrentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridContasCorrentes.Size = new System.Drawing.Size(558, 325);
+            this.gridContasCorrentes.TabIndex = 3;
             // 
             // contextMenuStrip1
             // 
@@ -153,19 +134,46 @@
             this.mnExtrato.Size = new System.Drawing.Size(172, 22);
             this.mnExtrato.Text = "&Consulta Extrato";
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Agencia";
+            this.Column1.HeaderText = "Agência";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "NumConta";
+            this.Column2.HeaderText = "Número Conta";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // CorrentistaNome
+            // 
+            this.CorrentistaNome.HeaderText = "Nome do Correntista";
+            this.CorrentistaNome.Name = "CorrentistaNome";
+            this.CorrentistaNome.ReadOnly = true;
+            // 
+            // CorrentistaCpfCnpj
+            // 
+            this.CorrentistaCpfCnpj.HeaderText = "CPF ou CNPJ";
+            this.CorrentistaCpfCnpj.Name = "CorrentistaCpfCnpj";
+            this.CorrentistaCpfCnpj.ReadOnly = true;
+            // 
             // frmListaContaCorrente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 396);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(587, 396);
+            this.Controls.Add(this.gridContasCorrentes);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnNovo);
             this.Name = "frmListaContaCorrente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de contas correntes cadastradas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmListaContaCorrente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridContasCorrentes)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -176,16 +184,16 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView gridContasCorrentes;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnAlterar;
         private System.Windows.Forms.ToolStripMenuItem mnExcluir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnLançamento;
         private System.Windows.Forms.ToolStripMenuItem mnExtrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CorrentistaNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CorrentistaCpfCnpj;
     }
 }

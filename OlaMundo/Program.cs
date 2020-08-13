@@ -10,7 +10,8 @@ namespace OlaMundo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Olá mundo");
+            var num = new Random().Next(0, 999999);
+            Console.WriteLine(num);
             Console.ReadKey();
         }
     }

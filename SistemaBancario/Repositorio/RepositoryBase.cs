@@ -42,13 +42,13 @@ namespace SistemaBancario.Repositorio
 
         protected virtual int ObterProxSequencial()
         {
-            var sql = $"SELECT VALOR + 1 FROM SEQUENCIAL WHERE SEQUENCIALID = '{Tabela}'";
+            var sql = $"SELECT VALOR + 1 FROM SEQUENCIAL WHERE SEQUENCIALID = '{Tabela.ToUpper()}'";
             var comando = _conexao.ObterComando();
             try
             {
                 comando.CommandText = sql;
                 var sequencial = System.Convert.ToInt32(comando.ExecuteScalar());
-                comando.CommandText = $"UPDATE SEQUENCIAL SET VALOR = {sequencial} WHERE SEQUENCIALID = '{Tabela}'";
+                comando.CommandText = $"UPDATE SEQUENCIAL SET VALOR = {sequencial} WHERE SEQUENCIALID = '{Tabela.ToUpper()}'";
                 comando.ExecuteNonQuery();
                 return sequencial;
             }

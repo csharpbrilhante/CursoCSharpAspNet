@@ -40,6 +40,7 @@ namespace SistemaBancario.Repositorio
                     { 4, versao04() },
                     { 5, versao05() },
                     { 6, versao06() },
+                    { 7, Versao07() },
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -62,7 +63,7 @@ namespace SistemaBancario.Repositorio
                     comando.CommandText = migracoes[migracao];
                     comando.ExecuteNonQuery();
                     //atualiza a versão, coma ultima versão aplicada
-                    comando.CommandText = $"INSERT INTO VERSAO (VERSAOID) VALUES ({migracao});";
+                    comando.CommandText = $"INSERT INTO VERSAO (VERSAOID, DATAHORA) VALUES ({migracao}, CURRENT_TIMESTAMP);";
                     comando.ExecuteNonQuery();
                 }
 
@@ -77,6 +78,12 @@ namespace SistemaBancario.Repositorio
             {
                 comando.Dispose();
             }
+        }
+
+        public string Versao07()
+        {
+            return @"CREATE UNIQUE INDEX IDX_UNQ_CONTACORRENTE_NUMCONTA
+                    ON CONTACORRENTE(NUMCONTA)";
         }
 
         public string versao06()
