@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.Utils", "Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.Cripto", "SistemaBancario.Cripto\SistemaBancario.Cripto.csproj", "{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.CaixaEletronico", "SistemaBancario.CaixaEletronico\SistemaBancario.CaixaEletronico.csproj", "{FA069FA7-74EC-4131-B089-FD9D67FC69F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBancario.Core", "SistemaBancario.Core\SistemaBancario.Core.csproj", "{DB1648BA-8E52-4BCE-9B3E-0A8E49C7597F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9402581C-74CD-4155-9FC2-B2E4CD82FAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA069FA7-74EC-4131-B089-FD9D67FC69F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA069FA7-74EC-4131-B089-FD9D67FC69F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA069FA7-74EC-4131-B089-FD9D67FC69F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA069FA7-74EC-4131-B089-FD9D67FC69F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1648BA-8E52-4BCE-9B3E-0A8E49C7597F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1648BA-8E52-4BCE-9B3E-0A8E49C7597F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1648BA-8E52-4BCE-9B3E-0A8E49C7597F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1648BA-8E52-4BCE-9B3E-0A8E49C7597F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

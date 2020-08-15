@@ -1,5 +1,5 @@
-﻿using SistemaBancario.Modelos;
-using SistemaBancario.Negocios;
+﻿using SistemaBancario.Core.Modelos;
+using SistemaBancario.Core.Negocios;
 using SistemaBancario.Utils.Helpers;
 using System;
 using System.Collections.Generic;

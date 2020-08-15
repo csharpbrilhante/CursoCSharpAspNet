@@ -1,4 +1,4 @@
-﻿using SistemaBancario.Negocios;
+﻿using SistemaBancario.Core.Negocios;
 using System;
 using System.Windows.Forms;
 

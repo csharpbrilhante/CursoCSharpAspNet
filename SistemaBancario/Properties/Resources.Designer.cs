@@ -69,16 +69,5 @@ namespace SistemaBancario.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kisspng_mysql_cluster_database_management_system_专_题_咖_啡_与_代_码_5b640d8b2a2e53_6067051415332837231728 {
-            get {
-                object obj = ResourceManager.GetObject("kisspng-mysql-cluster-database-management-system-专-题-咖-啡-与-代-码-5b640d8b2a2e53.606" +
-                        "7051415332837231728", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

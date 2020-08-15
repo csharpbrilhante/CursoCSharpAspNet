@@ -1,9 +1,10 @@
-﻿using SistemaBancario.Modelos;
-using SistemaBancario.Negocios;
+﻿using SistemaBancario.Core.Modelos;
+using SistemaBancario.Core.Negocios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,6 @@ namespace SistemaBancario
     public partial class frmListaContaCorrente : Form
     {
         private readonly ContaCorrenteBll _contaCorrenteBO = new ContaCorrenteBll();
-        private ContaCorrente _contaCorrenteSelecionada = null;
 
         public frmListaContaCorrente()
         {
@@ -32,22 +32,27 @@ namespace SistemaBancario
         private void CarregarLista()
         {
             var bs = new BindingSource();
-            bs.DataSource = _contaCorrenteBO.ObterContasCorrentes();
+            var lst = _contaCorrenteBO.ObterContasCorrentes();
+            bs.DataSource = lst;
             gridContasCorrentes.DataSource = bs;
+
+            button2.Enabled = lst?.Count > 0;
+            button3.Enabled = button2.Enabled;
+            mnAlterar.Enabled = button2.Enabled;
+            mnExcluir.Enabled = button2.Enabled;
         }
 
         private void frmListaContaCorrente_Load(object sender, EventArgs e)
         {
             ConfigurarDataGridView();
-
             CarregarLista();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _contaCorrenteSelecionada  = (ContaCorrente)gridContasCorrentes.SelectedRows[0].DataBoundItem;
+            var contaSelecionada  = (ContaCorrente)gridContasCorrentes.SelectedRows[0].DataBoundItem;
 
-            var frm = new frmCadastroContaCorrente(_contaCorrenteSelecionada);
+            var frm = new frmCadastroContaCorrente(contaSelecionada);
             frm.ShowDialog();
             CarregarLista();
         }
@@ -58,11 +63,12 @@ namespace SistemaBancario
 
             //isso aqui é um outro jeito de criar um delegate e atribuir a um evento, neste caso da gridview
             //Na próxima aula irei explicar a teoria sobre isso
+
             gridContasCorrentes.DataBindingComplete += (s, ev) =>
             {
                 foreach (DataGridViewRow row in gridContasCorrentes.Rows)
                 {
-                    if((ContaCorrente)row.DataBoundItem != null)
+                    if ((ContaCorrente)row.DataBoundItem != null)
                     {
                         row.Cells["CorrentistaNome"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.Nome ?? "";
                         row.Cells["CorrentistaCpfCnpj"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.CpfCnpj ?? "";
@@ -70,5 +76,41 @@ namespace SistemaBancario
                 }
             };
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente excluir a conta corrente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var contaSelecionada = (ContaCorrente)gridContasCorrentes.SelectedRows[0].DataBoundItem;
+
+                _contaCorrenteBO.ExcluirContaCorrente(contaSelecionada);
+
+                CarregarLista();
+            }
+        }
+
+        //private void PreencherDadosDoCorrentistaDaContaCorrente(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    foreach (DataGridViewRow row in gridContasCorrentes.Rows)
+        //    {
+        //        if ((ContaCorrente)row.DataBoundItem != null)
+        //        {
+        //            row.Cells["CorrentistaNome"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.Nome ?? "";
+        //            row.Cells["CorrentistaCpfCnpj"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.CpfCnpj ?? "";
+        //        }
+        //    }
+        //}
+
+        //private void gridContasCorrentes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    foreach (DataGridViewRow row in gridContasCorrentes.Rows)
+        //    {
+        //        if ((ContaCorrente)row.DataBoundItem != null)
+        //        {
+        //            row.Cells["CorrentistaNome"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.Nome ?? "";
+        //            row.Cells["CorrentistaCpfCnpj"].Value = ((ContaCorrente)row.DataBoundItem).Correntista?.CpfCnpj ?? "";
+        //        }
+        //    }
+        //}
     }
 }

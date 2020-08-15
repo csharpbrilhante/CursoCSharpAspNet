@@ -1,4 +1,4 @@
-﻿using SistemaBancario.Repositorio;
+﻿using SistemaBancario.Core.Repositorio;
 using System;
 using System.Windows.Forms;
 

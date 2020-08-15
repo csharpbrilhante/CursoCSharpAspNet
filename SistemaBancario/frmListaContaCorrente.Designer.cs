@@ -33,16 +33,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.gridContasCorrentes = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CorrentistaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CorrentistaCpfCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnAlterar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnLançamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExtrato = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CorrentistaNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CorrentistaCpfCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridContasCorrentes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Excluir";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // gridContasCorrentes
             // 
@@ -93,46 +94,6 @@
             this.gridContasCorrentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridContasCorrentes.Size = new System.Drawing.Size(558, 325);
             this.gridContasCorrentes.TabIndex = 3;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnAlterar,
-            this.mnExcluir,
-            this.toolStripSeparator1,
-            this.mnLançamento,
-            this.mnExtrato});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 98);
-            // 
-            // mnAlterar
-            // 
-            this.mnAlterar.Name = "mnAlterar";
-            this.mnAlterar.Size = new System.Drawing.Size(172, 22);
-            this.mnAlterar.Text = "Alterar";
-            // 
-            // mnExcluir
-            // 
-            this.mnExcluir.Name = "mnExcluir";
-            this.mnExcluir.Size = new System.Drawing.Size(172, 22);
-            this.mnExcluir.Text = "Excluir";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
-            // 
-            // mnLançamento
-            // 
-            this.mnLançamento.Name = "mnLançamento";
-            this.mnLançamento.Size = new System.Drawing.Size(172, 22);
-            this.mnLançamento.Text = "&Novo Lançamento";
-            // 
-            // mnExtrato
-            // 
-            this.mnExtrato.Name = "mnExtrato";
-            this.mnExtrato.Size = new System.Drawing.Size(172, 22);
-            this.mnExtrato.Text = "&Consulta Extrato";
             // 
             // Column1
             // 
@@ -159,6 +120,48 @@
             this.CorrentistaCpfCnpj.HeaderText = "CPF ou CNPJ";
             this.CorrentistaCpfCnpj.Name = "CorrentistaCpfCnpj";
             this.CorrentistaCpfCnpj.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnAlterar,
+            this.mnExcluir,
+            this.toolStripSeparator1,
+            this.mnLançamento,
+            this.mnExtrato});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 98);
+            // 
+            // mnAlterar
+            // 
+            this.mnAlterar.Name = "mnAlterar";
+            this.mnAlterar.Size = new System.Drawing.Size(180, 22);
+            this.mnAlterar.Text = "Alterar";
+            this.mnAlterar.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // mnExcluir
+            // 
+            this.mnExcluir.Name = "mnExcluir";
+            this.mnExcluir.Size = new System.Drawing.Size(172, 22);
+            this.mnExcluir.Text = "Excluir";
+            this.mnExcluir.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnLançamento
+            // 
+            this.mnLançamento.Name = "mnLançamento";
+            this.mnLançamento.Size = new System.Drawing.Size(180, 22);
+            this.mnLançamento.Text = "&Novo Lançamento";
+            // 
+            // mnExtrato
+            // 
+            this.mnExtrato.Name = "mnExtrato";
+            this.mnExtrato.Size = new System.Drawing.Size(180, 22);
+            this.mnExtrato.Text = "&Consulta Extrato";
             // 
             // frmListaContaCorrente
             // 
