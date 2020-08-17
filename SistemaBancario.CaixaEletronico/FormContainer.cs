@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaBancario.CaixaEletronico.Paginas
+namespace SistemaBancario.CaixaEletronico
 {
-    public partial class frmInicio : Form
+    public partial class FormContainer : Form
     {
-        public frmInicio()
+        public FormContainer()
         {
             InitializeComponent();
         }
