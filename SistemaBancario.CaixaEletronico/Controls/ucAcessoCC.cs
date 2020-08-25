@@ -20,18 +20,18 @@ namespace SistemaBancario.CaixaEletronico.Controls
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Acessar()
         {
-            if(txtAgencia.Text == "1234" && txtContaCorrente.Text == "123456" && txtSenha.Text == "0000")
+            if (txtAgencia.Text == "1234" && txtContaCorrente.Text == "123456" && txtSenha.Text == "0000")
             {
-                IniciarSessao.Invoke(sender,
+                IniciarSessao.Invoke(this,
                                  new ContaEventArgs(txtAgencia.Text, txtContaCorrente.Text));
             }
             else
             {
-                MessageBox.Show("Agência, conta corrente ou senha inválidos.", 
-                                "Acesso a conta corrente", 
-                                MessageBoxButtons.OK, 
+                MessageBox.Show("Agência, conta corrente ou senha inválidos.",
+                                "Acesso a conta corrente",
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
                 txtAgencia.Clear();
@@ -40,5 +40,22 @@ namespace SistemaBancario.CaixaEletronico.Controls
                 txtAgencia.Focus();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Acessar();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                Acessar();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }

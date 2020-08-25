@@ -1,4 +1,5 @@
 ﻿using SistemaBancario.CaixaEletronico.Controls;
+using SistemaBancario.CaixaEletronico.Eventos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace SistemaBancario.CaixaEletronico
     {
         private string _agencia;
         private string _contaCorrente;
+
+        ucMenu menu; //vai ser acessado em várias ocasiões
 
         public frmContainer()
         {
@@ -35,13 +38,29 @@ namespace SistemaBancario.CaixaEletronico
             }
         }
 
-        ucMenu menu;
-
         private void ExibirMenu()
         {
             menu = new ucMenu();
             menu.Sair += ImplementacaoDoSairDoMenu;
+            menu.ConsultaSaldo += ExibirSaldo;
+            menu.RealizarDeposito += ExibirDeposito;
+            menu.ExibirSaque += ExibirSaque;
+            menu.Dock = DockStyle.Fill;
             pnlContainer.Controls.Add(menu);
+        }
+
+        private void ExibirSaldo(object sender, EventArgs e)
+        {
+            var uc = new ucConsultaSaldo();
+            
+            uc.Sair += (s, ev) =>
+            {
+                pnlContainer.Controls.Remove(uc);
+                ExibirMenu();
+            };
+
+            pnlContainer.Controls.Remove(menu);
+            pnlContainer.Controls.Add(uc);
         }
 
         private void ImplementacaoDoSairDoMenu(object sender, EventArgs e)
@@ -66,13 +85,55 @@ namespace SistemaBancario.CaixaEletronico
                 pnlContainer.Controls.Remove(uc);
                 ExibirMenu();
             };
-
+            uc.Dock = DockStyle.Fill;
             pnlContainer.Controls.Add(uc);
         }
 
         private void frmContainer_Load(object sender, EventArgs e)
         {
             ExibirAcesso();
+        }
+
+        private void ExibirDeposito(object sender, EventArgs e)
+        {
+            var uc = new ucDeposito();
+
+            uc.Sair += (s, ev) =>
+            {
+                pnlContainer.Controls.Remove(uc);
+                ExibirMenu();
+            };
+
+            pnlContainer.Controls.Remove(menu);
+            pnlContainer.Controls.Add(uc);
+        }
+
+        private void ExibirSaque(object sender, EventArgs e)
+        {
+            var uc = new ucSaque();
+
+            uc.Sacar10 += Sacar;
+            uc.Sacar20 += Sacar;
+            uc.Sacar50 += Sacar;
+            uc.Sacar100 += Sacar;
+            uc.Sacar200 += Sacar;
+            uc.Sacar500 += Sacar;
+
+            uc.Sair += (s, ev) =>
+            {
+                pnlContainer.Controls.Remove(uc);
+                ExibirMenu();
+            };
+
+            pnlContainer.Controls.Remove(menu);
+            pnlContainer.Controls.Add(uc);
+        }
+
+
+        private void Sacar(object sender, ValorSaqueEventArgs e)
+        {
+            //realiza o saque conforme o valor devolvido no evento
+            MessageBox.Show($"Vc seleciobou o valor R$ {e.Valor.ToString("0.00")}");
         }
     }
 }

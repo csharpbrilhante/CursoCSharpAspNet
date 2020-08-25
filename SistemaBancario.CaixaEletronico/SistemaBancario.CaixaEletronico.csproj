@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Binarios\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -52,13 +52,32 @@
     <Compile Include="Controls\ucAcessoCC.Designer.cs">
       <DependentUpon>ucAcessoCC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucConsultaSaldo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucConsultaSaldo.Designer.cs">
+      <DependentUpon>ucConsultaSaldo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucDeposito.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucDeposito.Designer.cs">
+      <DependentUpon>ucDeposito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ucMenu.Designer.cs">
       <DependentUpon>ucMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucSaque.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucSaque.Designer.cs">
+      <DependentUpon>ucSaque.cs</DependentUpon>
+    </Compile>
     <Compile Include="Eventos\ContaEventArgs.cs" />
+    <Compile Include="Eventos\ValorSaqueEventArgs.cs" />
     <Compile Include="frmContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,8 +90,17 @@
     <EmbeddedResource Include="Controls\ucAcessoCC.resx">
       <DependentUpon>ucAcessoCC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucConsultaSaldo.resx">
+      <DependentUpon>ucConsultaSaldo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucDeposito.resx">
+      <DependentUpon>ucDeposito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucMenu.resx">
       <DependentUpon>ucMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucSaque.resx">
+      <DependentUpon>ucSaque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmContainer.resx">
       <DependentUpon>frmContainer.cs</DependentUpon>
@@ -102,6 +130,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\jupiterLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaBancario.Core\SistemaBancario.Core.csproj">
+      <Project>{db1648ba-8e52-4bce-9b3e-0a8e49c7597f}</Project>
+      <Name>SistemaBancario.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
