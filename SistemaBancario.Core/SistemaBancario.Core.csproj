@@ -62,12 +62,17 @@
   <ItemGroup>
     <Compile Include="Contratos\IModelo.cs" />
     <Compile Include="Contratos\IRepository.cs" />
+    <Compile Include="Dtos\DadosDeposito.cs" />
+    <Compile Include="Dtos\Sessao.cs" />
+    <Compile Include="Enumerados\EnDestinoDeposito.cs" />
     <Compile Include="Modelos\ContaCorrente.cs" />
     <Compile Include="Modelos\Correntista.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Negocios\CaixaEletronicoBll.cs" />
     <Compile Include="Negocios\ContaCorrenteBll.cs" />
     <Compile Include="Negocios\CorrentistaBll.cs" />
     <Compile Include="Negocios\LoginBll.cs" />
+    <Compile Include="Negocios\MovimentacoesBll.cs" />
     <Compile Include="Negocios\UsuarioBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\Conexao.cs" />

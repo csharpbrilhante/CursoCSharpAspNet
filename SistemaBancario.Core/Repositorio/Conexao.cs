@@ -40,6 +40,8 @@ namespace SistemaBancario.Core.Repositorio
                     { 5, versao05() },
                     { 6, versao06() },
                     { 7, Versao07() },
+                    { 8, Versao08() },
+                    { 9, Versao09() },
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -77,6 +79,16 @@ namespace SistemaBancario.Core.Repositorio
             {
                 comando.Dispose();
             }
+        }
+
+        public string Versao09()
+        {
+            return @"UPDATE CONTACORRENTE SET SENHA = 'DP96fCMhxRAMnrrhWdot3y6BBFbx49RWOa+sYbbt0L1H68xTDLk8ihQVj6cIZqdl6QLBdkcO4KluVAQm55k6rYmYseeG/Rr0OPpbFJSbrGvgGta0y8D0L8gxj300Qnp/';";
+        }
+
+        public string Versao08()
+        {
+            return @"ALTER TABLE CONTACORRENTE ADD SENHA TEXT;";
         }
 
         public string Versao07()

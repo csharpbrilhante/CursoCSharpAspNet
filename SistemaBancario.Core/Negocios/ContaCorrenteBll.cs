@@ -1,4 +1,5 @@
-﻿using SistemaBancario.Core.Modelos;
+﻿using SistemaBancario.Core.Dtos;
+using SistemaBancario.Core.Modelos;
 using SistemaBancario.Core.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace SistemaBancario.Core.Negocios
     public class ContaCorrenteBll
     {
         private readonly ContaCorrenteRepository _dataset = new ContaCorrenteRepository();
+        private readonly CorrentistaBll correntistaBll = new CorrentistaBll();
 
         public void CriarOuAtualizar(ContaCorrente pContaCorrente)
         {
@@ -29,7 +31,7 @@ namespace SistemaBancario.Core.Negocios
 
         public List<Correntista> ObterCorrentistas()
         {
-            return new CorrentistaBll().ObterCorrentistas(true);
+            return correntistaBll.ObterCorrentistas(true);
         }
 
         public int ObterNumeroConta()
@@ -46,6 +48,26 @@ namespace SistemaBancario.Core.Negocios
         {
             if (string.IsNullOrWhiteSpace(pContaCorrente.Agencia.Trim()))
                 throw new Exception("Número da agência não foi informado.");
+
+            if (string.IsNullOrWhiteSpace(pContaCorrente.Senha.Trim()) || pContaCorrente.Senha.Trim().ToUpper() == "2K21")
+                throw new Exception("Senha reservada ao sistema ou inválida.\nFavor solicite a criação da senha!");
+        }
+
+        public Sessao ValidarAcessoContaCorrente(string pAgencia, string pConta, string pSenha)
+        {
+            var conta = _dataset.Read()
+                .FirstOrDefault(cc => cc.Agencia == pAgencia && cc.NumConta == pConta);
+
+            if(conta != null && conta.Senha == pSenha)
+            {
+                return new Sessao() {
+                        Agencia = conta.Agencia,
+                        NumeroConta = conta.NumConta,
+                        NomeCorrentista = conta.Correntista.Nome
+                };
+            }
+
+            return null;
         }
     }
 }

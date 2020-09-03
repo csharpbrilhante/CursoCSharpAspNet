@@ -1,5 +1,6 @@
 ﻿using SistemaBancario.Core.Modelos;
 using SistemaBancario.Utils.Db;
+using SistemaBancario.Utils.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -18,7 +19,7 @@ namespace SistemaBancario.Core.Repositorio
             pObjeto.Id = ObterProxSequencial();
             pObjeto.DataCriacao = DateTime.Now;
 
-            var sql = @"INSERT INTO CONTACORRENTE (AGENCIA, NUMCONTA, CORRENTISTAID) VALUES (@AGENCIA, @NUMCONTA, @CORRENTISTAID)";
+            var sql = @"INSERT INTO CONTACORRENTE (AGENCIA, NUMCONTA, CORRENTISTAID, SENHA) VALUES (@AGENCIA, @NUMCONTA, @CORRENTISTAID, @SENHA)";
 
             try
             {
@@ -26,6 +27,7 @@ namespace SistemaBancario.Core.Repositorio
                 _comando.CommandText = sql;
                 _comando.Parameters.Add(new SQLiteParameter("AGENCIA", pObjeto.Agencia));
                 _comando.Parameters.Add(new SQLiteParameter("NUMCONTA", pObjeto.NumConta));
+                _comando.Parameters.Add(new SQLiteParameter("SENHA", Cripto.Encrypt(pObjeto.Senha)));
                 _comando.Parameters.Add(new SQLiteParameter("CORRENTISTAID", pObjeto.CorrentistaId));
 
                 _comando.ExecuteNonQuery();
@@ -56,7 +58,9 @@ namespace SistemaBancario.Core.Repositorio
                         contacorrente.Agencia = reader["AGENCIA"].ToString();
                         contacorrente.NumConta = reader["NUMCONTA"].ToString();
                         contacorrente.CorrentistaId = Convert.ToInt32(reader["CORRENTISTAID"]);
-                        
+                        contacorrente.Senha = Cripto.Decrypt(reader["SENHA"].ToString());
+
+
                         contacorrente.Correntista = new Correntista()
                         {
                             Id = Convert.ToInt32(reader["CORRENTISTAID"]),
@@ -85,8 +89,8 @@ namespace SistemaBancario.Core.Repositorio
 
         public override void Update(ContaCorrente pObjeto)
         {
-            var sql = @"UPDATE CONTACORRENTE SET AGENCIA = @AGENCIA, NUMCONTA = @NUMCONTA, CORRENTISTAID = @CORRENTISTAID
-                        WHERE CONTACORRENTEID = @CONTACORRENTEID";
+            var sql = @"UPDATE CONTACORRENTE SET AGENCIA = @AGENCIA, NUMCONTA = @NUMCONTA, CORRENTISTAID = @CORRENTISTAID, 
+                        SENHA = @SENHA WHERE CONTACORRENTEID = @CONTACORRENTEID";
 
             try
             {
@@ -96,6 +100,7 @@ namespace SistemaBancario.Core.Repositorio
                 _comando.Parameters.Add(new SQLiteParameter("AGENCIA", pObjeto.Agencia));
                 _comando.Parameters.Add(new SQLiteParameter("NUMCONTA", pObjeto.NumConta));
                 _comando.Parameters.Add(new SQLiteParameter("CORRENTISTAID", pObjeto.CorrentistaId));
+                _comando.Parameters.Add(new SQLiteParameter("SENHA", Cripto.Encrypt(pObjeto.Senha)));
                 _comando.ExecuteNonQuery();
             }
             finally

@@ -70,10 +70,10 @@ namespace SistemaBancario.CaixaEletronico
             
             uc.IniciarSessao += (s, e) =>
             {
-                _agencia = e.Agencia;
-                _contaCorrente = e.Conta;
-                lblAgencia.Text = _agencia;
-                lblConta.Text = _contaCorrente;
+                pnlSessao.Agencia = e.Agencia;
+                pnlSessao.Conta = e.Conta;
+                pnlSessao.NomeCorrentista = e.NomeCorrentista;
+
                 pnlSessao.Visible = true;
                 pnlContainer.Controls.Remove(uc);
                 ExibirMenu();

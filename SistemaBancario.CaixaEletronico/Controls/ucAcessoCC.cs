@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaBancario.CaixaEletronico.Eventos;
+using SistemaBancario.CaixaEletronico.Negocios;
 
 namespace SistemaBancario.CaixaEletronico.Controls
 {
     public partial class ucAcessoCC : UserControl
     {
+
+
+        private CaixaEletronicoBll CaixaEletronicoBO = new CaixaEletronicoBll();
+
         public event EventHandler<ContaEventArgs> IniciarSessao;
 
         public ucAcessoCC()
@@ -22,10 +27,14 @@ namespace SistemaBancario.CaixaEletronico.Controls
 
         private void Acessar()
         {
-            if (txtAgencia.Text == "1234" && txtContaCorrente.Text == "123456" && txtSenha.Text == "0000")
+            var sessao = CaixaEletronicoBO.AcessarConta(txtAgencia.Text, txtContaCorrente.Text, txtSenha.Text);
+            
+            if (sessao != null)
             {
                 IniciarSessao.Invoke(this,
-                                 new ContaEventArgs(txtAgencia.Text, txtContaCorrente.Text));
+                                 new ContaEventArgs(sessao.Agencia, sessao.NumeroConta, sessao.NomeCorrentista));
+
+                CaixaEletronicoBll.SessaoInfo = sessao;
             }
             else
             {

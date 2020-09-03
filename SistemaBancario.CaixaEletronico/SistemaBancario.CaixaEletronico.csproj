@@ -76,6 +76,12 @@
     <Compile Include="Controls\ucSaque.Designer.cs">
       <DependentUpon>ucSaque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucSessao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucSessao.Designer.cs">
+      <DependentUpon>ucSessao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Eventos\ContaEventArgs.cs" />
     <Compile Include="Eventos\ValorSaqueEventArgs.cs" />
     <Compile Include="frmContainer.cs">
@@ -85,6 +91,7 @@
       <DependentUpon>frmContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IPagina.cs" />
+    <Compile Include="Negocios\CaixaEletronicoBll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\ucAcessoCC.resx">
@@ -101,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucSaque.resx">
       <DependentUpon>ucSaque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucSessao.resx">
+      <DependentUpon>ucSessao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmContainer.resx">
       <DependentUpon>frmContainer.cs</DependentUpon>

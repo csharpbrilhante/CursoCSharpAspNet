@@ -12,5 +12,6 @@ namespace SistemaBancario.Core.Modelos
         public Correntista Correntista { get; set; }
         //public Lazy<Correntista> MyProperty { get; set; }
         public DateTime DataCriacao { get; set; }
+        public string Senha { get; set; }
     }
 }

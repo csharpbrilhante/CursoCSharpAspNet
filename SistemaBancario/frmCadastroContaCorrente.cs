@@ -45,6 +45,7 @@ namespace SistemaBancario
             txtAgencia.Text = pContaCorrente.Agencia;
             txtNumConta.Text = pContaCorrente.NumConta;
             cbxCorrentistas.SelectedValue = pContaCorrente.CorrentistaId;
+            txtSenha.Text = pContaCorrente.Senha;
 
             _contaCorrenteSelecionada = pContaCorrente;
         }
@@ -80,6 +81,8 @@ namespace SistemaBancario
             {
                 _contaCorrenteSelecionada.Agencia = txtAgencia.Text;
                 _contaCorrenteSelecionada.CorrentistaId = Convert.ToInt32(cbxCorrentistas.SelectedValue);
+                _contaCorrenteSelecionada.Senha = txtSenha.Text;
+
                 ContaCorrenteBO.CriarOuAtualizar(_contaCorrenteSelecionada);
                 this.Close();
             }

@@ -10,11 +10,13 @@ namespace SistemaBancario.CaixaEletronico.Eventos
     {
         public string Agencia { get; private set; }
         public string Conta { get; private set; }
+        public string NomeCorrentista { get; private set; }
 
-        public ContaEventArgs(string pAgencia, string pConta)
+        public ContaEventArgs(string pAgencia, string pConta, string pNomeCorrentista)
         {
             Agencia = pAgencia;
             Conta = pConta;
+            NomeCorrentista = pNomeCorrentista;
         }
     }
 }
