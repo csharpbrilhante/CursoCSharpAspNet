@@ -173,11 +173,12 @@
             // txtValorDeposito
             // 
             this.txtValorDeposito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorDeposito.Location = new System.Drawing.Point(524, 229);
+            this.txtValorDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorDeposito.Location = new System.Drawing.Point(524, 232);
             this.txtValorDeposito.Name = "txtValorDeposito";
-            this.txtValorDeposito.Size = new System.Drawing.Size(264, 29);
+            this.txtValorDeposito.Size = new System.Drawing.Size(264, 31);
             this.txtValorDeposito.TabIndex = 12;
+            this.txtValorDeposito.Text = "0,00";
             // 
             // button1
             // 

@@ -32,29 +32,62 @@ namespace SistemaBancario.CaixaEletronico.Controls
 
         private void button2_Click(object sender, EventArgs e)
         {
-            switch (tbcContas.SelectedIndex)
+            try
             {
-                case (int)EnDestinoDeposito.MinhaConta: 
-                    DepositarNaMinhaConta(); 
-                    break;
-                
-                case (int)EnDestinoDeposito.OutraConta:
-                    DepositarEmOutraConta();
-                    break;
-                
-                default: 
-                    break;
+                switch (tbcContas.SelectedIndex)
+                {
+                    case (int)EnDestinoDeposito.MinhaConta:
+                        DepositarNaMinhaConta();
+                        break;
+
+                    case (int)EnDestinoDeposito.OutraConta:
+                        DepositarEmOutraConta();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                MessageBox.Show("Depósito realizado com sucesso!");
+
+                LimparCampos();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void LimparCampos()
+        {
+            txtAgencia.Clear();
+            txtContaCorrente.Clear();
+            txtValorDeposito.Text = "0,00";
+            tbcContas.SelectedIndex = (int)EnDestinoDeposito.MinhaConta;
         }
 
         private void DepositarNaMinhaConta()
         {
-            _caixaEletronicoBO.Depositar(new DadosDeposito(CaixaEletronicoBll.SessaoInfo.Agencia, CaixaEletronicoBll.SessaoInfo.NumeroConta, Convert.ToDecimal(txtValorDeposito.Text)));
+            try
+            {
+                _caixaEletronicoBO.Depositar(new DadosMovimentacao(CaixaEletronicoBll.SessaoInfo.Agencia, CaixaEletronicoBll.SessaoInfo.NumeroConta, Convert.ToDecimal(txtValorDeposito.Text)));
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private void DepositarEmOutraConta()
         {
-            _caixaEletronicoBO.Depositar(new DadosDeposito(txtAgencia.Text, txtContaCorrente.Text, Convert.ToDecimal(txtValorDeposito.Text)));
+            try
+            {
+                _caixaEletronicoBO.Depositar(new DadosMovimentacao(txtAgencia.Text, txtContaCorrente.Text, Convert.ToDecimal(txtValorDeposito.Text)));
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

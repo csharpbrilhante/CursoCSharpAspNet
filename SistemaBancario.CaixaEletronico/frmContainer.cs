@@ -1,5 +1,7 @@
 ﻿using SistemaBancario.CaixaEletronico.Controls;
 using SistemaBancario.CaixaEletronico.Eventos;
+using SistemaBancario.CaixaEletronico.Negocios;
+using SistemaBancario.Core.Dtos;
 using System;
 using System.Windows.Forms;
 
@@ -105,12 +107,7 @@ namespace SistemaBancario.CaixaEletronico
         {
             var uc = new ucSaque();
 
-            uc.Sacar10 += Sacar;
-            uc.Sacar20 += Sacar;
-            uc.Sacar50 += Sacar;
-            uc.Sacar100 += Sacar;
-            uc.Sacar200 += Sacar;
-            uc.Sacar500 += Sacar;
+            uc.Sacar += Sacar;
 
             uc.Sair += (s, ev) =>
             {
@@ -125,8 +122,16 @@ namespace SistemaBancario.CaixaEletronico
 
         private void Sacar(object sender, ValorSaqueEventArgs e)
         {
-            //realiza o saque conforme o valor devolvido no evento
-            MessageBox.Show($"Vc seleciobou o valor R$ {e.Valor.ToString("0.00")}");
+            try
+            {
+                var CxBO = new CaixaEletronicoBll();
+                CxBO.Sacar(e.Valor);
+                MessageBox.Show($"Saque no valor de R$ {e.Valor.ToString("0.00")} realizado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

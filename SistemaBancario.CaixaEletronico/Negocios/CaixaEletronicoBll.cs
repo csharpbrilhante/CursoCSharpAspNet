@@ -20,9 +20,20 @@ namespace SistemaBancario.CaixaEletronico.Negocios
             return _contaCorrenteBO.AcessarConta(pAgencia, pConta, pSenha);
         }
 
-        public void Depositar(DadosDeposito pDadosConta)
+        public void Depositar(DadosMovimentacao pDadosMovimentacao)
         {
-            _movimentacoesBO.Depositar(pDadosConta);
+            _movimentacoesBO.Depositar(pDadosMovimentacao);
+        }
+
+        public void Sacar(decimal pValor)
+        {
+            var dadosMovimentacao = new DadosMovimentacao(SessaoInfo.Agencia, SessaoInfo.NumeroConta, pValor);
+            _movimentacoesBO.Sacar(dadosMovimentacao);
+        }
+
+        public decimal ConsultaSaldo()
+        {
+            return _movimentacoesBO.ConsultaSaldo(new DadosContaCorrente(SessaoInfo.Agencia, SessaoInfo.NumeroConta));
         }
     }
 }

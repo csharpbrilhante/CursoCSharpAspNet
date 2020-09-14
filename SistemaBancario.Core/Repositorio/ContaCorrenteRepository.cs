@@ -126,5 +126,23 @@ namespace SistemaBancario.Core.Repositorio
                 _comando.Liberar();
             }
         }
+
+        public decimal ConsultaSaldoContaCorrente(ContaCorrente pContaCorrente)
+        {
+            var sql = $@"SELECT SUM(VALOR) AS SALDO FROM MOVIMENTACAOCC
+                        WHERE CONTACORRENTEID = @CONTACORRENTEID";
+
+            try
+            {
+                _comando = _conexao.ObterComando();
+                _comando.CommandText = sql;
+                _comando.Parameters.Add(new SQLiteParameter("CONTACORRENTEID", pContaCorrente.Id));
+                return Convert.ToDecimal(_comando.ExecuteScalar());
+            }
+            finally
+            {
+                _comando.Liberar();
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaBancario.CaixaEletronico.Interfaces;
+using SistemaBancario.CaixaEletronico.Negocios;
 
 namespace SistemaBancario.CaixaEletronico.Controls
 {
@@ -28,6 +29,7 @@ namespace SistemaBancario.CaixaEletronico.Controls
         private void ucConsultaSaldo_Load(object sender, EventArgs e)
         {
             lblDataAtual.Text = string.Format(lblDataAtual.Text, "Em", DateTime.Now.ToString("dd/MM/yyyy"));
+            lblValorSaldo.Text = new CaixaEletronicoBll().ConsultaSaldo().ToString("0.00");
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -33,15 +33,17 @@ namespace SistemaBancario.Core.Repositorio
             {
                 var migracoes = new Dictionary<int, string>
                 {
-                    { 1, versao01() },
-                    { 2, versao02() },
-                    { 3, versao03() },
-                    { 4, versao04() },
-                    { 5, versao05() },
-                    { 6, versao06() },
+                    { 1, Versao01() },
+                    { 2, Versao02() },
+                    { 3, Versao03() },
+                    { 4, Versao04() },
+                    { 5, Versao05() },
+                    { 6, Versao06() },
                     { 7, Versao07() },
                     { 8, Versao08() },
                     { 9, Versao09() },
+                    { 10, Versao10() },
+                    { 11, Versao11() }
                 };
 
                 comando.Transaction = comando.Connection.BeginTransaction();
@@ -81,6 +83,25 @@ namespace SistemaBancario.Core.Repositorio
             }
         }
 
+        public string Versao11()
+        {
+            return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
+                    ('MOVIMENTACAOCC', 0);";
+        }
+
+        public string Versao10()
+        {
+            return @"CREATE TABLE MOVIMENTACAOCC(
+                          MOVIMENTACAOCCID INTEGER PRIMARY KEY AUTOINCREMENT,
+                          CONTACORRENTEID INTEGER NOT NULL,
+                          DATAMOVIMENTACAO TIMESTAMP DEFAULT CURRENT_TIME NOT NULL,
+                          VALOR DECIMAL(10, 5) DEFAULT 0 NOT NULL,
+                          HISTORICO TEXT,
+                          DATACRIACAO TIMESTAMP DEFAULT CURRENT_TIME NOT NULL,
+                          FOREIGN KEY(CONTACORRENTEID) REFERENCES CONTACORRENTE(CONTACORRENTEID)
+                    );";
+        }
+
         public string Versao09()
         {
             return @"UPDATE CONTACORRENTE SET SENHA = 'DP96fCMhxRAMnrrhWdot3y6BBFbx49RWOa+sYbbt0L1H68xTDLk8ihQVj6cIZqdl6QLBdkcO4KluVAQm55k6rYmYseeG/Rr0OPpbFJSbrGvgGta0y8D0L8gxj300Qnp/';";
@@ -97,13 +118,13 @@ namespace SistemaBancario.Core.Repositorio
                     ON CONTACORRENTE(NUMCONTA)";
         }
 
-        public string versao06()
+        public string Versao06()
         {
             return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
                     ('CONTACORRENTE', 0);";
         }
 
-        public string versao05()
+        public string Versao05()
         {
             return @"CREATE TABLE CONTACORRENTE(
                           CONTACORRENTEID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -114,19 +135,19 @@ namespace SistemaBancario.Core.Repositorio
                     );";
         }
 
-        public string versao04()
+        public string Versao04()
         {
             return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
                     ('CORRENTISTA', 0);";
         }
 
-        public string versao03()
+        public string Versao03()
         {
             return @"INSERT INTO SEQUENCIAL (SEQUENCIALID, VALOR) VALUES 
                     ('USUARIO', (SELECT COALESCE(MAX(USUARIOID), 1) FROM USUARIO));";
         }
 
-        public string versao02()
+        public string Versao02()
         {
             return @"CREATE TABLE IF NOT EXISTS [SEQUENCIAL] (
                         [SEQUENCIALID] TEXT  NOT NULL PRIMARY KEY,
@@ -134,7 +155,7 @@ namespace SistemaBancario.Core.Repositorio
                         );";
         }
 
-        public string versao01()
+        public string Versao01()
         {
             var senhaCriptografada = "C6lw+S97VY7utO5Zhn1RemtNKYDL7RLbFgeXSEtMzFc0rlbWHMsB3siYoUmxr2jKLjGix0vS8EdFoYylHc54GFORuSOLg76oFpsO3e4ghIEknXQ4r4QfyzH5O3+6p9S7";
 
