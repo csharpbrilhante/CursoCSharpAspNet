@@ -1,0 +1,23 @@
+img{
+	border-radius: 100px;
+	width: 75px; 
+	height: 75px; 
+	float: left
+}
+
+h3{
+	color: tomato;
+}
+
+p{
+	color: gray;
+}
+
+.titulo-verde{
+	color: green;
+}
+
+h1{
+	padding: 16px;
+	color: #f7567c;
+}
